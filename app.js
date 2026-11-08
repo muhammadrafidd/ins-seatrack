@@ -1,5 +1,5 @@
 const app = document.getElementById('app');
-const state = { user: null, token: null, dashboard: null, view: 'overview', selectedShipmentId: '', attentionType: '', editShipmentId: '', returnToAttention: false, returnToDashboard: false, presentationMode: false };
+const state = { user: null, token: null, dashboard: null, view: 'overview', selectedShipmentId: '', attentionType: '', editShipmentId: '', returnToAttention: false, returnToDashboard: false, returnToShipments: false, presentationMode: false };
 const dashboardFilters = { route: 'Semua rute', status: 'Semua status' };
 const analysisFilters = { route: 'Semua rute', stage: 'Semua tahapan' };
 const shipmentProcessLabels = { DRAFT: 'Persiapan dokumen', BOOKED: 'Booking / Pickup', EXPORT_CLEARED: 'Dokumen ekspor selesai', IN_TRANSIT: 'Dalam pelayaran', ARRIVED: 'Tiba di tujuan', CUSTOMS: 'Proses customs', OUT_FOR_DELIVERY: 'Pengantaran lokal', DELIVERED: 'Delivered / POD' };
@@ -156,7 +156,7 @@ function attention() {
   };
   page.querySelector('input').addEventListener('input', (event) => { searchQuery = event.target.value.toLowerCase(); currentPage = 1; renderRows(); });
   if (rows.length) renderRows(); else pager.remove();
-  page.querySelectorAll('[data-detail]').forEach((button) => button.addEventListener('click', () => { state.selectedShipmentId = Number(button.dataset.detail); state.returnToAttention = true; state.view = 'detail'; renderApp(); }));
+  page.querySelectorAll('[data-detail]').forEach((button) => button.addEventListener('click', () => { state.selectedShipmentId = Number(button.dataset.detail); state.returnToAttention = true; state.returnToDashboard = false; state.returnToShipments = false; state.view = 'detail'; renderApp(); }));
   page.querySelectorAll('[data-edit]').forEach((button) => button.addEventListener('click', () => {
     const shipment = items.find((item) => item.id === Number(button.dataset.edit));
     if (!shipment) return;
@@ -182,12 +182,17 @@ function delays() {
   const page = document.createElement('div'); page.innerHTML = `<section class="page-title"><p class="eyebrow">PENCATATAN OPERASIONAL</p><h1>Input kendala keterlambatan</h1><p>Catat satu kendala untuk setiap shipment. Pencatatan ulang akan memperbarui kendala sebelumnya.</p></section><section class="form-layout"><form class="panel delay-form"><h2>Detail kendala</h2><div class="field full"><label>Shipment <select name="shipmentId" required><option value="">Pilih nomor shipment</option>${shipments.map((item) => `<option value="${item.id}">${escapeHTML(item.shipmentNo)} · ${escapeHTML(item.origin)} → ${escapeHTML(item.destination)}</option>`).join('')}</select></label></div><div class="field"><label>Tanggal kendala<input type="date" name="incidentDate" value="${today}" required></label></div><div class="field"><label>Tahapan proses<select name="processStage" required>${processStages.map((item) => `<option>${escapeHTML(item)}</option>`).join('')}</select></label></div><div class="field full"><label>Faktor penyebab<select name="factor" required>${delayFactors.map((item) => `<option>${escapeHTML(item)}</option>`).join('')}</select></label></div><div class="field full"><label>Deskripsi kendala<textarea name="description" maxlength="2000" required placeholder="Jelaskan kendala yang terjadi…"></textarea></label></div><div class="field full"><label>Tindakan yang dilakukan<textarea name="action" maxlength="2000" placeholder="Tindakan atau tindak lanjut yang sudah dilakukan…"></textarea></label></div><button class="primary" type="submit">Simpan kendala</button><p class="form-message" role="alert"></p></form><aside class="factor-guide"><p class="eyebrow">9 KRITERIA PENELITIAN</p><h2>Gunakan kategori yang konsisten.</h2><ol>${delayFactors.map((factor) => `<li>${escapeHTML(factor)}</li>`).join('')}</ol></aside></section>`;
   if (state.selectedShipmentId) page.querySelector('[name="shipmentId"]').value = state.selectedShipmentId;
   const shipmentField = page.querySelector('[name="shipmentId"]').closest('.field');
+  shipmentField.querySelector('label').childNodes[0].textContent = 'Nomor shipment / referensi pengiriman ';
   const shipmentSelect = shipmentField.querySelector('select');
   shipmentSelect.hidden = true;
   shipmentSelect.setAttribute('aria-hidden', 'true');
+  shipmentSelect.style.display = 'none';
   const picker = document.createElement('div');
   picker.className = 'shipment-picker';
+  picker.dataset.label = 'nomor-shipment';
   picker.innerHTML = '<span class="picker-label">Cari shipment</span><input class="shipment-picker-input" type="search" autocomplete="off" placeholder="Ketik Shipment ID, customer, atau rute…"><div class="shipment-picker-results" hidden></div><small>Pilih shipment dari hasil pencarian untuk melanjutkan.</small>';
+  picker.innerHTML = '<span class="picker-label">Cari nomor shipment</span><input class="shipment-picker-input" type="search" autocomplete="off" placeholder="Ketik nomor shipment, customer, atau rute..."><div class="shipment-picker-results" hidden></div><small>Pilih nomor shipment dari hasil pencarian untuk melanjutkan.</small>';
+  picker.innerHTML = '<input class="shipment-picker-input" type="search" autocomplete="off" placeholder="Cari nomor shipment, customer, atau rute..."><div class="shipment-picker-results" hidden></div><small>Ketik untuk mencari, lalu pilih nomor shipment dari daftar.</small>';
   shipmentField.querySelector('label').appendChild(picker);
   const pickerInput = picker.querySelector('input');
   const pickerResults = picker.querySelector('.shipment-picker-results');
@@ -195,6 +200,8 @@ function delays() {
   if (state.selectedShipmentId) { const selected = shipments.find((item) => item.id === Number(state.selectedShipmentId)); if (selected) chooseShipment(selected); }
   const showShipmentResults = () => { const query = pickerInput.value.trim().toLowerCase(); const matches = shipments.filter((item) => `${item.shipmentNo} ${item.shipper} ${item.origin} ${item.destination}`.toLowerCase().includes(query)).slice(0, 8); pickerResults.innerHTML = matches.length ? matches.map((item) => `<button type="button" data-shipment-id="${item.id}"><strong>${escapeHTML(item.shipmentNo)}</strong><span>${escapeHTML(item.shipper)} · ${escapeHTML(item.origin)} → ${escapeHTML(item.destination)}</span></button>`).join('') : '<p>Shipment tidak ditemukan.</p>'; pickerResults.hidden = false; pickerResults.querySelectorAll('button').forEach((button) => button.addEventListener('click', () => chooseShipment(shipments.find((item) => item.id === Number(button.dataset.shipmentId))))); };
   pickerInput.addEventListener('focus', showShipmentResults); pickerInput.addEventListener('input', showShipmentResults);
+  const renderAllShipmentResults = () => { const query = pickerInput.value.trim().toLowerCase(); const matches = shipments.filter((item) => `${item.shipmentNo} ${item.shipper} ${item.origin} ${item.destination}`.toLowerCase().includes(query)); pickerResults.innerHTML = matches.length ? matches.map((item) => `<button type="button" data-shipment-id="${item.id}"><strong>${escapeHTML(item.shipmentNo)}</strong><span>${escapeHTML(item.shipper)} · ${escapeHTML(item.origin)} → ${escapeHTML(item.destination)}</span></button>`).join('') : '<p>Nomor shipment tidak ditemukan.</p>'; pickerResults.hidden = false; pickerResults.querySelectorAll('button').forEach((button) => button.addEventListener('click', () => chooseShipment(shipments.find((item) => item.id === Number(button.dataset.shipmentId))))); };
+  pickerInput.addEventListener('focus', renderAllShipmentResults); pickerInput.addEventListener('input', renderAllShipmentResults);
   pickerInput.addEventListener('keydown', (event) => { if (event.key === 'Escape') pickerResults.hidden = true; });
   document.addEventListener('click', (event) => { if (!picker.contains(event.target)) pickerResults.hidden = true; }, { once: true });
   const guide = page.querySelector('.factor-guide');
@@ -243,6 +250,11 @@ function detail() {
     const backButton = document.createElement('button'); backButton.className = 'secondary detail-return'; backButton.type = 'button'; backButton.textContent = '← Kembali ke dashboard';
     detailHeading.appendChild(backButton);
     backButton.addEventListener('click', () => { state.returnToDashboard = false; state.view = 'overview'; renderApp(); });
+  }
+  if (state.returnToShipments) {
+    const backButton = document.createElement('button'); backButton.className = 'secondary detail-return'; backButton.type = 'button'; backButton.textContent = '← Kembali ke Data Shipment';
+    detailHeading.appendChild(backButton);
+    backButton.addEventListener('click', () => { state.returnToShipments = false; state.view = 'shipments'; renderApp(); });
   }
   detailHeading.appendChild(page.querySelector('.add-delay'));
   page.querySelector('.add-delay').addEventListener('click', () => { state.view = 'delays'; renderApp(); });
@@ -328,7 +340,7 @@ function buildShipmentDirectory(page) {
   const openEditor = (item, isNew) => { host.innerHTML = form(item, isNew); const editor = host.querySelector('.shipment-editor'); editor.querySelector('[name="etd"]').value = dateInputValue(item.etd); editor.querySelector('[name="eta"]').value = dateInputValue(item.eta); editor.querySelector('[name="actualArrival"]').value = dateInputValue(item.actualArrival); const eta = editor.querySelector('[name="eta"]'); const actual = editor.querySelector('[name="actualArrival"]'); const status = editor.querySelector('[name="status"]'); const statusNote = document.createElement('small'); statusNote.className = 'status-calculation'; status.parentElement.append(statusNote); const syncStatus = () => { if (!eta.value || !actual.value) { status.disabled = false; statusNote.textContent = 'Isi actual arrival untuk menghitung status otomatis.'; return; } const days = Math.round((new Date(`${actual.value}T00:00:00`) - new Date(`${eta.value}T00:00:00`)) / 86400000); status.value = days >= 1 ? 'Delay' : 'On Time'; status.disabled = true; statusNote.textContent = days >= 1 ? `Status otomatis: Delay (${days} hari setelah ETA).` : 'Status otomatis: On Time (tiba sesuai atau sebelum ETA).'; }; eta.addEventListener('change', syncStatus); actual.addEventListener('change', syncStatus); syncStatus(); const close = () => host.replaceChildren(); editor.querySelector('.close-editor').addEventListener('click', close); host.addEventListener('click', (event) => { if (event.target === host) close(); }); editor.querySelector('form').addEventListener('submit', async (event) => { event.preventDefault(); const target = event.currentTarget; const data = Object.fromEntries(new FormData(target)); if (status.disabled) data.status = status.value; const message = target.querySelector('.form-message'); try { await request(target.dataset.new === 'true' ? '/api/shipments' : `/api/shipments/${target.dataset.id}`, { method: target.dataset.new === 'true' ? 'POST' : 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }); await loadDashboard(); renderApp(); } catch (error) { message.textContent = error.message; } }); };
   page.querySelector('.add-shipment').addEventListener('click', () => openEditor({}, true));
   page.querySelectorAll('[data-edit]').forEach((button) => { button.insertAdjacentHTML('afterend', `<button class="table-detail" data-detail="${button.dataset.edit}" title="Lihat detail shipment">Detail</button>`); button.addEventListener('click', () => openEditor(shipments.find((item) => item.id === Number(button.dataset.edit)), false)); });
-  page.querySelectorAll('[data-detail]').forEach((button) => button.addEventListener('click', () => { state.selectedShipmentId = Number(button.dataset.detail); state.view = 'detail'; renderApp(); }));
+  page.querySelectorAll('[data-detail]').forEach((button) => button.addEventListener('click', () => { state.selectedShipmentId = Number(button.dataset.detail); state.returnToAttention = false; state.returnToDashboard = false; state.returnToShipments = true; state.view = 'detail'; renderApp(); }));
   if (state.editShipmentId) { const editItem = shipments.find((item) => item.id === Number(state.editShipmentId)); state.editShipmentId = ''; if (editItem) openEditor(editItem, false); }
   page.querySelector('.shipment-search input').addEventListener('input', (event) => { const query = event.target.value.toLowerCase(); page.querySelectorAll('tbody tr').forEach((row) => { row.hidden = !row.textContent.toLowerCase().includes(query); }); });
   page.querySelector('.route-filter').addEventListener('change', (event) => { page.querySelectorAll('tbody tr').forEach((row) => { row.hidden = event.target.value !== 'Semua rute' && row.dataset.route !== event.target.value; }); });
@@ -469,7 +481,7 @@ function buildCleanDashboard(page) {
     else state.view = 'shipments';
     renderApp();
   }));
-  workPanels.querySelectorAll('[data-shipment]').forEach((button) => button.addEventListener('click', () => { if (button.dataset.shipment) { state.selectedShipmentId = Number(button.dataset.shipment); state.returnToAttention = false; state.returnToDashboard = true; state.view = 'detail'; renderApp(); } }));
+  workPanels.querySelectorAll('[data-shipment]').forEach((button) => button.addEventListener('click', () => { if (button.dataset.shipment) { state.selectedShipmentId = Number(button.dataset.shipment); state.returnToAttention = false; state.returnToDashboard = true; state.returnToShipments = false; state.view = 'detail'; renderApp(); } }));
   page.querySelector('.apply-dashboard').addEventListener('click', () => { dashboardFilters.route = page.querySelector('[name="route"]').value; dashboardFilters.status = page.querySelector('[name="status"]').value; renderApp(); });
 }
 
