@@ -18,11 +18,13 @@ from flask import Flask, jsonify, request, send_from_directory
 from werkzeug.utils import secure_filename
 
 ROOT = Path(__file__).resolve().parent
+STATIC_DIR = ROOT / "public" if (ROOT / "public").is_dir() else ROOT
 DATA_DIR = Path(os.environ.get("CRM_DATA_DIR", ROOT / "data"))
 USERS_FILE = DATA_DIR / "db.json"
 DASHBOARD_FILE = DATA_DIR / "dashboard.json"
 SOURCE_FILE = DATA_DIR / "source" / "inbound-outbound.xlsx"
 BUNDLED_SOURCE_FILE = ROOT / "data" / "source" / "inbound-outbound.xlsx"
+ROOT_SOURCE_FILE = ROOT / "inbound-outbound.xlsx"
 UPLOAD_DIR = DATA_DIR / "uploads"
 SESSION_DURATION = 8 * 60 * 60
 SESSIONS: dict[str, dict[str, int]] = {}
@@ -113,8 +115,8 @@ def calendar_date(value: str | None):
 
 def parse_shipments() -> list[dict[str, Any]]:
     """Read the provided XLSX directly; no extra spreadsheet dependency is required."""
-    source_file = SOURCE_FILE if SOURCE_FILE.exists() else BUNDLED_SOURCE_FILE
-    if not source_file.exists():
+    source_file = next((candidate for candidate in (SOURCE_FILE, BUNDLED_SOURCE_FILE, ROOT_SOURCE_FILE) if candidate.exists()), None)
+    if source_file is None:
         return []
     namespace = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
     with zipfile.ZipFile(source_file) as book:
@@ -528,10 +530,10 @@ def api_not_found(unused): return jsonify(message="Endpoint tidak ditemukan"), 4
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def frontend(path):
-    file = ROOT / "public" / path
+    file = STATIC_DIR / path
     if path and file.is_file():
-        return send_from_directory(ROOT / "public", path)
-    return send_from_directory(ROOT / "public", "index.html")
+        return send_from_directory(STATIC_DIR, path)
+    return send_from_directory(STATIC_DIR, "index.html")
 
 
 if __name__ == "__main__":
