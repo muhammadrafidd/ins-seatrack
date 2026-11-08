@@ -55,7 +55,7 @@ AHP_TEMPLATE_WEIGHTS = {
 }
 AHP_TEMPLATE_RATIO = 0.081
 
-app = Flask(__name__, static_folder="public", static_url_path="")
+app = Flask(__name__, static_folder=str(STATIC_DIR), static_url_path="")
 
 
 def write_json(file: Path, data: Any) -> None:
