@@ -1,0 +1,65 @@
+.ahp-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 6px 0 24px;
+}
+
+.ahp-heading h1 { margin: 5px 0 4px; font-size: clamp(30px, 3vw, 42px); color: #123b54; }
+.ahp-heading p:not(.eyebrow) { margin: 0; color: #718a9a; }
+.ahp-actions { display: flex; align-items: center; gap: 10px; }
+.ahp-actions .primary { min-height: 40px; padding: 0 16px; font-size: 13px; white-space: nowrap; }
+.ahp-state { padding: 9px 13px; border-radius: 999px; background: #f0f4f5; color: #6b8290; font-size: 13px; font-weight: 750; white-space: nowrap; }
+.ahp-state.ready { background: #e5f5ed; color: #247350; }
+
+.ahp-template-layout { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 20px; align-items: stretch; }
+.ahp-priority-panel, .consistency-panel { padding: 22px; border: 1px solid #e2ecef; box-shadow: 0 10px 28px rgba(22, 63, 82, .055); }
+.ahp-panel-title h2, .consistency-panel h2 { margin: 0; font-size: 19px; color: #173c52; }
+.ahp-panel-title p { margin: 5px 0 19px; color: #758b99; font-size: 13px; }
+.ahp-table-head, .ahp-priority-row { display: grid; grid-template-columns: 88px minmax(190px, 1.35fr) 74px minmax(105px, .65fr); gap: 14px; align-items: center; }
+.ahp-table-head { padding: 11px 12px; border-radius: 10px; background: #eef4f7; color: #557182; font-size: 12px; font-weight: 800; letter-spacing: .02em; }
+.ahp-priority-list { margin-top: 3px; }
+.ahp-priority-row { min-height: 52px; padding: 0 12px; border-bottom: 1px solid #edf2f4; color: #35576a; }
+.ahp-priority-row:last-child { border-bottom: 0; }
+.ahp-priority-row strong { font-size: 14px; font-weight: 700; }
+.ahp-priority-row > b { color: #1d5572; font-size: 14px; text-align: right; }
+.ahp-rank { display: grid; place-items: center; width: 29px; height: 29px; border-radius: 9px; background: #f5f8f9; color: #557384; font-size: 13px; font-weight: 800; }
+.ahp-priority-row:nth-child(-n+3) .ahp-rank { background: #fff3c9; color: #927021; }
+.ahp-weight-track { display: block; height: 9px; overflow: hidden; border-radius: 999px; background: #e8f0f3; }
+.ahp-weight-track em { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #63a5d3, #287aa9); }
+
+.consistency-panel { display: flex; flex-direction: column; background: linear-gradient(180deg, #fff 0%, #f7fbfc 100%); }
+.consistency-panel > .eyebrow { margin: 0 0 7px; }
+.consistency-values { margin: 19px 0 13px; border-top: 1px solid #e5edef; }
+.consistency-values > div { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid #e5edef; }
+.consistency-values span { color: #748a98; font-size: 13px; font-weight: 700; }
+.consistency-values b { color: #23495c; font-size: 17px; }
+.consistency-note { margin: 1px 0 17px; color: #8498a4; font-size: 12px; line-height: 1.55; }
+.consistency-result { margin-top: auto; padding: 15px; border-radius: 12px; text-align: center; }
+.consistency-result strong, .consistency-result span { display: block; }
+.consistency-result strong { margin-bottom: 4px; font-size: 17px; }
+.consistency-result span { font-size: 12px; font-weight: 700; }
+.consistency-result.consistent { background: #def5e7; color: #23724e; }
+.consistency-result.review { background: #fff1d7; color: #a36413; }
+.consistency-result.waiting { background: #edf2f4; color: #68808f; }
+.ahp-entry-modal .ahp-editor { width: min(850px, calc(100vw - 32px)); max-height: min(760px, calc(100vh - 32px)); overflow: auto; }
+.ahp-entry-modal .weight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ahp-entry-modal .ahp-footer { margin-top: 18px; }
+
+@media (max-width: 980px) {
+  .ahp-template-layout { grid-template-columns: 1fr; }
+  .consistency-panel { min-height: 220px; }
+}
+
+@media (max-width: 630px) {
+  .ahp-heading { display: block; }
+  .ahp-actions { margin-top: 13px; flex-wrap: wrap; }
+  .ahp-state { display: inline-block; margin-top: 13px; }
+  .ahp-priority-panel, .consistency-panel { padding: 17px; }
+  .ahp-table-head, .ahp-priority-row { grid-template-columns: 48px minmax(130px, 1fr) 55px; gap: 8px; }
+  .ahp-table-head span:last-child, .ahp-weight-track { display: none; }
+  .ahp-table-head { font-size: 11px; }
+  .ahp-priority-row strong { font-size: 13px; }
+  .ahp-entry-modal .weight-grid { grid-template-columns: 1fr; }
+}

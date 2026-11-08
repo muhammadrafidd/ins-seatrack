@@ -1,0 +1,18 @@
+.research-brief, .ahp-method {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) repeat(3, minmax(95px, .25fr));
+  gap: 1rem;
+  align-items: stretch;
+  margin: 1.25rem 0;
+  padding: 1.35rem;
+  border: 1px solid rgba(25, 94, 111, .16);
+  border-radius: 18px;
+  background: linear-gradient(115deg, #f4f9f8, #fffdf9);
+}
+.research-brief h2, .ahp-method h2 { margin: .2rem 0 .45rem; color: #163f4a; }
+.research-brief p, .ahp-method p { margin: 0; color: #58737a; line-height: 1.55; }
+.baseline-stat, .ahp-method > div:last-child { display: grid; place-content: center; padding: .85rem; border-radius: 13px; background: #fff; border: 1px solid rgba(25, 94, 111, .1); }
+.baseline-stat strong, .ahp-method strong { color: #1b6678; font-size: 1.55rem; }
+.baseline-stat span, .ahp-method span { color: #688087; font-size: .78rem; }
+.ahp-method { grid-template-columns: 1fr 180px; background: linear-gradient(115deg, #f8fbfc, #eef7f5); }
+@media (max-width: 760px) { .research-brief, .ahp-method { grid-template-columns: 1fr; } .baseline-stat { min-height: 72px; } }

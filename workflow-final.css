@@ -1,0 +1,6 @@
+.workflow-final .flow-steps { flex-wrap:wrap; }
+.workflow-final .flow-step { flex:1 1 128px; min-width:128px; }
+.workflow-final .flow-arrow { display:none; }
+.workflow-final .flow-note { margin-top:3px; }
+.recommendation small { display:block; margin-top:.42rem; color:#789096; }
+@media (max-width:760px) { .workflow-final .flow-steps { display:grid; grid-template-columns:1fr; } .workflow-final .flow-step { min-width:0; } }

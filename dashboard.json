@@ -1,0 +1,4793 @@
+{
+  "delays": [
+    {
+      "id": 1794109330558,
+      "shipmentId": 4,
+      "incidentDate": "2026-11-08",
+      "processStage": "Booking",
+      "factor": "Pelabuhan dan Terminal",
+      "controllability": "Sebagian controllable",
+      "description": "546",
+      "action": "",
+      "createdAt": "2026-11-08T03:42:10.558056+00:00"
+    },
+    {
+      "id": 1794021601535,
+      "shipmentId": 18,
+      "incidentDate": "2026-11-07",
+      "processStage": "Booking",
+      "factor": "Pelabuhan dan Terminal",
+      "description": "asdasd",
+      "action": "asdasd",
+      "createdAt": "2026-11-07T03:20:01.535420+00:00"
+    },
+    {
+      "id": 1794017980411,
+      "shipmentId": 11,
+      "incidentDate": "2026-11-07",
+      "processStage": "Transit",
+      "factor": "Peralatan dan Armada",
+      "description": "TEST",
+      "action": "TEST",
+      "createdAt": "2026-11-07T02:19:40.411931+00:00"
+    },
+    {
+      "id": 1794017769655,
+      "shipmentId": 3,
+      "incidentDate": "2026-11-07",
+      "processStage": "Stuffing / loading",
+      "factor": "Kapal dan Jadwal Pelayaran",
+      "description": "testing",
+      "action": "testing",
+      "createdAt": "2026-11-07T02:16:09.655429+00:00"
+    },
+    {
+      "id": 900005,
+      "shipmentId": 6,
+      "incidentDate": "2026-11-06",
+      "processStage": "Transit",
+      "factor": "Kesiapan Barang",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900006,
+      "shipmentId": 7,
+      "incidentDate": "2026-11-07",
+      "processStage": "Kedatangan",
+      "factor": "Koordinasi dan Komunikasi",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900015,
+      "shipmentId": 16,
+      "incidentDate": "2026-11-16",
+      "processStage": "Delivery",
+      "factor": "Koordinasi dan Komunikasi",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900016,
+      "shipmentId": 17,
+      "incidentDate": "2026-11-17",
+      "processStage": "Booking",
+      "factor": "Sumber Daya Manusia",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900025,
+      "shipmentId": 26,
+      "incidentDate": "2026-11-06",
+      "processStage": "Dokumentasi",
+      "factor": "Sumber Daya Manusia",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900026,
+      "shipmentId": 27,
+      "incidentDate": "2026-11-07",
+      "processStage": "Customs clearance",
+      "factor": "Proses Operasional",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900035,
+      "shipmentId": 36,
+      "incidentDate": "2026-11-16",
+      "processStage": "Stuffing / loading",
+      "factor": "Proses Operasional",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900036,
+      "shipmentId": 37,
+      "incidentDate": "2026-11-17",
+      "processStage": "Keberangkatan",
+      "factor": "Pelabuhan dan Terminal",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900045,
+      "shipmentId": 46,
+      "incidentDate": "2026-11-06",
+      "processStage": "Transit",
+      "factor": "Pelabuhan dan Terminal",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900046,
+      "shipmentId": 47,
+      "incidentDate": "2026-11-07",
+      "processStage": "Kedatangan",
+      "factor": "Kapal dan Jadwal Pelayaran",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900055,
+      "shipmentId": 56,
+      "incidentDate": "2026-11-16",
+      "processStage": "Delivery",
+      "factor": "Kapal dan Jadwal Pelayaran",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900056,
+      "shipmentId": 57,
+      "incidentDate": "2026-11-17",
+      "processStage": "Booking",
+      "factor": "Kondisi Cuaca dan Lingkungan",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900065,
+      "shipmentId": 66,
+      "incidentDate": "2026-11-06",
+      "processStage": "Dokumentasi",
+      "factor": "Kondisi Cuaca dan Lingkungan",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900066,
+      "shipmentId": 67,
+      "incidentDate": "2026-11-07",
+      "processStage": "Customs clearance",
+      "factor": "Peralatan dan Armada",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900075,
+      "shipmentId": 76,
+      "incidentDate": "2026-11-16",
+      "processStage": "Stuffing / loading",
+      "factor": "Peralatan dan Armada",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900076,
+      "shipmentId": 77,
+      "incidentDate": "2026-11-17",
+      "processStage": "Keberangkatan",
+      "factor": "Dokumen Kepabeanan",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900085,
+      "shipmentId": 86,
+      "incidentDate": "2026-11-06",
+      "processStage": "Transit",
+      "factor": "Dokumen Kepabeanan",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900086,
+      "shipmentId": 87,
+      "incidentDate": "2026-11-07",
+      "processStage": "Kedatangan",
+      "factor": "Kesiapan Barang",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900095,
+      "shipmentId": 96,
+      "incidentDate": "2026-11-16",
+      "processStage": "Delivery",
+      "factor": "Kesiapan Barang",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900096,
+      "shipmentId": 97,
+      "incidentDate": "2026-11-17",
+      "processStage": "Booking",
+      "factor": "Koordinasi dan Komunikasi",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900105,
+      "shipmentId": 106,
+      "incidentDate": "2026-11-06",
+      "processStage": "Dokumentasi",
+      "factor": "Koordinasi dan Komunikasi",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900106,
+      "shipmentId": 107,
+      "incidentDate": "2026-11-07",
+      "processStage": "Customs clearance",
+      "factor": "Sumber Daya Manusia",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900115,
+      "shipmentId": 116,
+      "incidentDate": "2026-11-16",
+      "processStage": "Stuffing / loading",
+      "factor": "Sumber Daya Manusia",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900116,
+      "shipmentId": 117,
+      "incidentDate": "2026-11-17",
+      "processStage": "Keberangkatan",
+      "factor": "Proses Operasional",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900125,
+      "shipmentId": 126,
+      "incidentDate": "2026-11-06",
+      "processStage": "Transit",
+      "factor": "Proses Operasional",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900126,
+      "shipmentId": 127,
+      "incidentDate": "2026-11-07",
+      "processStage": "Kedatangan",
+      "factor": "Pelabuhan dan Terminal",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900135,
+      "shipmentId": 136,
+      "incidentDate": "2026-11-16",
+      "processStage": "Delivery",
+      "factor": "Pelabuhan dan Terminal",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    },
+    {
+      "id": 900136,
+      "shipmentId": 137,
+      "incidentDate": "2026-11-17",
+      "processStage": "Booking",
+      "factor": "Kapal dan Jadwal Pelayaran",
+      "description": "Kendala operasional tercatat.",
+      "action": "Tindak lanjut sedang dilakukan.",
+      "controllability": "Sebagian controllable"
+    }
+  ],
+  "shipmentUpdates": {
+    "11": {
+      "status": "On Time",
+      "actualArrival": "2026-11-12",
+      "statusNote": "",
+      "delayDays": 0
+    },
+    "1": {
+      "destination": "SIN",
+      "origin": "BTH",
+      "shipper": "PT. VALEO AC INDONESIA",
+      "shipmentNo": "B2501003-06",
+      "actualArrival": "2026-11-09",
+      "productService": "LCL",
+      "status": "On Time",
+      "shipmentType": "OE",
+      "eta": "2026-11-09",
+      "etd": "2026-10-08",
+      "delayDays": 0
+    },
+    "4": {
+      "destination": "SIN",
+      "origin": "BTH",
+      "shipper": "PT. CATERPILLAR INDONESIA BATAM",
+      "shipmentNo": "BTMBS2500078",
+      "actualArrival": "2026-11-07",
+      "productService": "LCL",
+      "status": "On Time",
+      "shipmentType": "OE",
+      "eta": "2026-11-17",
+      "etd": "2025-01-16",
+      "delayDays": 0
+    },
+    "3": {
+      "destination": "BTH",
+      "origin": "SIN",
+      "shipper": "SUMITOMO CORPORATION (SHANGHAI) LTD.",
+      "shipmentNo": "IDLBIN-IDL010973",
+      "actualArrival": "2026-11-09",
+      "productService": "LCL",
+      "status": "On Time",
+      "shipmentType": "OI",
+      "eta": "2026-11-10",
+      "etd": "2026-10-01",
+      "delayDays": 0
+    },
+    "5": {
+      "shipper": "XIAMEN T AND J STONE CO., LTD",
+      "eta": "2026-11-16",
+      "productService": "FCL",
+      "shipmentType": "OI",
+      "etd": "2026-11-01",
+      "actualArrival": "2026-11-19",
+      "status": "Delay",
+      "destination": "BTH",
+      "origin": "SIN",
+      "shipmentNo": "IDLBIN-IDL011079",
+      "delayDays": 3
+    },
+    "141": {
+      "shipper": "PT. SENTRAL SOLUSI DIGITAL",
+      "eta": "2026-11-05",
+      "productService": "LCL",
+      "shipmentType": "OE",
+      "etd": "2026-11-01",
+      "actualArrival": "2026-11-09",
+      "status": "Delay",
+      "destination": "SIN",
+      "origin": "BTH",
+      "shipmentNo": "IDLBIN-IDL0100828",
+      "delayDays": 4
+    },
+    "6": {
+      "shipmentType": "OE",
+      "eta": "2025-04-02",
+      "etd": "2025-03-02",
+      "actualArrival": "2025-02-04",
+      "productService": "FCL",
+      "shipper": "PT. IDROS SERVICES",
+      "status": "On Time",
+      "destination": "SIN",
+      "origin": "BTH",
+      "shipmentNo": "WS/SIN/276404-25",
+      "delayDays": 0
+    },
+    "8": {
+      "productService": "FCL",
+      "shipmentNo": "BAPSIN0089087",
+      "shipper": "PT. VOLEX INDONESIA",
+      "eta": "2026-07-02",
+      "destination": "SIN",
+      "shipmentType": "OE",
+      "etd": "2025-06-02",
+      "actualArrival": "2026-07-02",
+      "origin": "BTH",
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "7": {
+      "productService": "LCL",
+      "shipmentNo": "83757S107",
+      "shipper": "TESTING & CERTIFICATION PTE LTD",
+      "eta": "2025-05-02",
+      "destination": "BTH",
+      "shipmentType": "OI",
+      "etd": "2025-04-02",
+      "actualArrival": "",
+      "origin": "SIN",
+      "status": "Delay",
+      "delayDays": 3
+    },
+    "9": {
+      "productService": "LCL",
+      "shipmentNo": "BTMBS2500013",
+      "shipper": "PT. IDROS SERVICES",
+      "eta": "2025-11-02",
+      "destination": "SIN",
+      "shipmentType": "OE",
+      "etd": "2025-10-02",
+      "actualArrival": "",
+      "origin": "BTH",
+      "status": "Belum dievaluasi"
+    },
+    "2": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "10": {
+      "status": "Belum dievaluasi"
+    },
+    "12": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "13": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "14": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "15": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "16": {
+      "status": "Delay",
+      "delayDays": 4
+    },
+    "17": {
+      "status": "Delay",
+      "delayDays": 1
+    },
+    "18": {
+      "status": "Belum dievaluasi"
+    },
+    "19": {
+      "status": "Belum dievaluasi"
+    },
+    "20": {
+      "status": "Belum dievaluasi"
+    },
+    "21": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "22": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "23": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "24": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "25": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "26": {
+      "status": "Delay",
+      "delayDays": 2
+    },
+    "27": {
+      "status": "Delay",
+      "delayDays": 3
+    },
+    "28": {
+      "status": "Belum dievaluasi"
+    },
+    "29": {
+      "status": "Belum dievaluasi"
+    },
+    "30": {
+      "status": "Belum dievaluasi"
+    },
+    "31": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "32": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "33": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "34": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "35": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "36": {
+      "status": "Delay",
+      "delayDays": 4
+    },
+    "37": {
+      "status": "Delay",
+      "delayDays": 1
+    },
+    "38": {
+      "status": "Belum dievaluasi"
+    },
+    "39": {
+      "status": "Belum dievaluasi"
+    },
+    "40": {
+      "status": "Belum dievaluasi"
+    },
+    "41": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "42": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "43": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "44": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "45": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "46": {
+      "status": "Delay",
+      "delayDays": 2
+    },
+    "47": {
+      "status": "Delay",
+      "delayDays": 3
+    },
+    "48": {
+      "status": "Belum dievaluasi"
+    },
+    "49": {
+      "status": "Belum dievaluasi"
+    },
+    "50": {
+      "status": "Belum dievaluasi"
+    },
+    "51": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "52": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "53": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "54": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "55": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "56": {
+      "status": "Delay",
+      "delayDays": 4
+    },
+    "57": {
+      "status": "Delay",
+      "delayDays": 1
+    },
+    "58": {
+      "status": "Belum dievaluasi"
+    },
+    "59": {
+      "status": "Belum dievaluasi"
+    },
+    "60": {
+      "status": "Belum dievaluasi"
+    },
+    "61": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "62": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "63": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "64": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "65": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "66": {
+      "status": "Delay",
+      "delayDays": 2
+    },
+    "67": {
+      "status": "Delay",
+      "delayDays": 3
+    },
+    "68": {
+      "status": "Belum dievaluasi"
+    },
+    "69": {
+      "status": "Belum dievaluasi"
+    },
+    "70": {
+      "status": "Belum dievaluasi"
+    },
+    "71": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "72": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "73": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "74": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "75": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "76": {
+      "status": "Delay",
+      "delayDays": 4
+    },
+    "77": {
+      "status": "Delay",
+      "delayDays": 1
+    },
+    "78": {
+      "status": "Belum dievaluasi"
+    },
+    "79": {
+      "status": "Belum dievaluasi"
+    },
+    "80": {
+      "status": "Belum dievaluasi"
+    },
+    "81": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "82": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "83": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "84": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "85": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "86": {
+      "status": "Delay",
+      "delayDays": 2
+    },
+    "87": {
+      "status": "Delay",
+      "delayDays": 3
+    },
+    "88": {
+      "status": "Belum dievaluasi"
+    },
+    "89": {
+      "status": "Belum dievaluasi"
+    },
+    "90": {
+      "status": "Belum dievaluasi"
+    },
+    "91": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "92": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "93": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "94": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "95": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "96": {
+      "status": "Delay",
+      "delayDays": 4
+    },
+    "97": {
+      "status": "Delay",
+      "delayDays": 1
+    },
+    "98": {
+      "status": "Belum dievaluasi"
+    },
+    "99": {
+      "status": "Belum dievaluasi"
+    },
+    "100": {
+      "status": "Belum dievaluasi"
+    },
+    "101": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "102": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "103": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "104": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "105": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "106": {
+      "status": "Delay",
+      "delayDays": 2
+    },
+    "107": {
+      "status": "Delay",
+      "delayDays": 3
+    },
+    "108": {
+      "status": "Belum dievaluasi"
+    },
+    "109": {
+      "status": "Belum dievaluasi"
+    },
+    "110": {
+      "status": "Belum dievaluasi"
+    },
+    "111": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "112": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "113": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "114": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "115": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "116": {
+      "status": "Delay",
+      "delayDays": 4
+    },
+    "117": {
+      "status": "Delay",
+      "delayDays": 1
+    },
+    "118": {
+      "status": "Belum dievaluasi"
+    },
+    "119": {
+      "status": "Belum dievaluasi"
+    },
+    "120": {
+      "status": "Belum dievaluasi"
+    },
+    "121": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "122": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "123": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "124": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "125": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "126": {
+      "status": "Delay",
+      "delayDays": 2
+    },
+    "127": {
+      "status": "Delay",
+      "delayDays": 3
+    },
+    "128": {
+      "status": "Belum dievaluasi"
+    },
+    "129": {
+      "status": "Belum dievaluasi"
+    },
+    "130": {
+      "status": "Belum dievaluasi"
+    },
+    "131": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "132": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "133": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "134": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "135": {
+      "status": "On Time",
+      "delayDays": 0
+    },
+    "136": {
+      "status": "Delay",
+      "delayDays": 4
+    },
+    "137": {
+      "status": "Delay",
+      "delayDays": 1
+    },
+    "138": {
+      "status": "Belum dievaluasi"
+    },
+    "139": {
+      "status": "Belum dievaluasi"
+    },
+    "140": {
+      "status": "Belum dievaluasi"
+    },
+    "142": {
+      "status": "On Time",
+      "delayDays": 0
+    }
+  },
+  "ahp": {
+    "consistencyRatio": 0.081,
+    "weights": {
+      "Dokumen Kepabeanan": 0.247,
+      "Koordinasi dan Komunikasi": 0.188,
+      "Pelabuhan dan Terminal": 0.133,
+      "Kapal dan Jadwal Pelayaran": 0.112,
+      "Proses Operasional": 0.098,
+      "Kesiapan Barang": 0.074,
+      "Peralatan dan Armada": 0.061,
+      "Sumber Daya Manusia": 0.052,
+      "Kondisi Cuaca dan Lingkungan": 0.035
+    }
+  },
+  "manualShipments": [
+    {
+      "id": 141,
+      "invoiceNo": "-",
+      "pod": "-",
+      "containerType": "-",
+      "containers": 0,
+      "weight": 0,
+      "ajuNo": "-",
+      "documentDate": "-",
+      "ppftzNo": "-",
+      "remarks": "",
+      "actualArrival": "",
+      "status": "Belum dievaluasi",
+      "carrier": "-",
+      "vesselVoyage": "-",
+      "consignee": "-",
+      "shipper": "PT. SENTRAL SOLUSI DIGITAL",
+      "eta": "2026-11-05",
+      "productService": "LCL",
+      "shipmentType": "OE",
+      "etd": "2026-11-01",
+      "destination": "SIN",
+      "origin": "BTH",
+      "shipmentNo": "IDLBIN-IDL0100828"
+    },
+    {
+      "id": 142,
+      "invoiceNo": "-",
+      "pod": "-",
+      "containerType": "-",
+      "containers": 0,
+      "weight": 0,
+      "ajuNo": "-",
+      "documentDate": "-",
+      "ppftzNo": "-",
+      "remarks": "",
+      "actualArrival": "2026-11-11",
+      "status": "Delay",
+      "carrier": "-",
+      "vesselVoyage": "-",
+      "consignee": "-",
+      "productService": "LCL",
+      "shipmentNo": "WS/SIN/276404-25",
+      "shipper": "PT. IDROS SERVICES",
+      "eta": "2026-11-09",
+      "destination": "SIN",
+      "shipmentType": "OE",
+      "etd": "2026-11-07",
+      "origin": "BTH"
+    }
+  ],
+  "shipmentProcesses": {
+    "1": [
+      {
+        "status": "DRAFT",
+        "note": "Dok.456789",
+        "timestamp": "2026-11-08T02:30:16.517204+00:00",
+        "userId": null
+      },
+      {
+        "status": "BOOKED",
+        "note": "done",
+        "timestamp": "2026-11-08T02:36:39.041593+00:00",
+        "userId": null
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T03:30:03.354816+00:00",
+        "userId": null,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "3": [
+      {
+        "status": "DRAFT",
+        "note": "asdsd",
+        "timestamp": "2026-11-08T02:36:48.726538+00:00",
+        "userId": null
+      },
+      {
+        "status": "BOOKED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:36:50.645219+00:00",
+        "userId": null
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "asdsad",
+        "timestamp": "2026-11-08T02:36:52.472951+00:00",
+        "userId": null
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:36:55.473624+00:00",
+        "userId": null
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:36:57.515163+00:00",
+        "userId": null
+      },
+      {
+        "status": "DELIVERED",
+        "note": "adasda",
+        "timestamp": "2026-11-08T02:37:11.210209+00:00",
+        "userId": null
+      }
+    ],
+    "4": [
+      {
+        "status": "DRAFT",
+        "note": "asdsa",
+        "timestamp": "2026-11-08T02:40:08.170133+00:00",
+        "userId": null
+      },
+      {
+        "status": "BOOKED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:10.241045+00:00",
+        "userId": null
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "asdsad",
+        "timestamp": "2026-11-08T02:40:11.998222+00:00",
+        "userId": null
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:13.665667+00:00",
+        "userId": null
+      },
+      {
+        "status": "ARRIVED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:15.239020+00:00",
+        "userId": null
+      },
+      {
+        "status": "DELIVERED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:17.200009+00:00",
+        "userId": null
+      }
+    ],
+    "6": [
+      {
+        "status": "DRAFT",
+        "note": "asdad",
+        "timestamp": "2026-11-08T02:40:25.229577+00:00",
+        "userId": null
+      },
+      {
+        "status": "BOOKED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:26.789851+00:00",
+        "userId": null
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "asdad",
+        "timestamp": "2026-11-08T02:40:29.150985+00:00",
+        "userId": null
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:30.938071+00:00",
+        "userId": null
+      },
+      {
+        "status": "ARRIVED",
+        "note": "asdad",
+        "timestamp": "2026-11-08T02:40:32.565491+00:00",
+        "userId": null
+      },
+      {
+        "status": "DELIVERED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:34.406030+00:00",
+        "userId": null
+      }
+    ],
+    "5": [
+      {
+        "status": "DRAFT",
+        "note": "sdfad",
+        "timestamp": "2026-11-08T02:40:42.689011+00:00",
+        "userId": null
+      },
+      {
+        "status": "BOOKED",
+        "note": "asdasda",
+        "timestamp": "2026-11-08T02:40:45.103388+00:00",
+        "userId": null
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:46.771268+00:00",
+        "userId": null
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "asdsad",
+        "timestamp": "2026-11-08T02:40:48.584623+00:00",
+        "userId": null
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:40:50.732226+00:00",
+        "userId": null
+      }
+    ],
+    "18": [
+      {
+        "status": "DRAFT",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:41:06.297576+00:00",
+        "userId": null
+      },
+      {
+        "status": "BOOKED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:41:08.377879+00:00",
+        "userId": null
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "asdasda",
+        "timestamp": "2026-11-08T02:41:09.939361+00:00",
+        "userId": null
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:41:11.686215+00:00",
+        "userId": null
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:41:13.540224+00:00",
+        "userId": null
+      }
+    ],
+    "11": [
+      {
+        "status": "DRAFT",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:41:22.303252+00:00",
+        "userId": null
+      },
+      {
+        "status": "BOOKED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T02:41:24.290614+00:00",
+        "userId": null
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "asdsad",
+        "timestamp": "2026-11-08T02:41:26.038507+00:00",
+        "userId": null
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "asdas",
+        "timestamp": "2026-11-08T02:41:27.771999+00:00",
+        "userId": null
+      }
+    ],
+    "8": [
+      {
+        "status": "DRAFT",
+        "note": "hk",
+        "timestamp": "2026-11-08T03:46:03.737040+00:00",
+        "userId": null,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "sadsad",
+        "timestamp": "2026-11-08T04:17:28.833345+00:00",
+        "userId": null,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "asdasd",
+        "timestamp": "2026-11-08T04:28:55.328731+00:00",
+        "userId": null,
+        "document": {
+          "number": "asd"
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "asd",
+        "timestamp": "2026-11-08T04:52:13.197490+00:00",
+        "userId": null,
+        "document": {
+          "number": "asd sa"
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "asd",
+        "timestamp": "2026-11-08T04:52:18.661129+00:00",
+        "userId": null,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "28": [
+      {
+        "status": "DRAFT",
+        "note": "asdasd asd",
+        "timestamp": "2026-11-08T04:17:42.594790+00:00",
+        "userId": null,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "2": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "7": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "12": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "13": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "14": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "15": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "16": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-16T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "17": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "sdfs",
+        "timestamp": "2026-11-08T04:59:24.729540+00:00",
+        "userId": null,
+        "document": {
+          "number": "sd ds"
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "asd asd a",
+        "timestamp": "2026-11-08T04:59:31.489047+00:00",
+        "userId": null,
+        "document": {
+          "number": "asd asd"
+        }
+      }
+    ],
+    "21": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "22": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "23": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "24": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "25": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "26": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-06T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "27": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "31": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "32": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "33": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "34": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "35": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "36": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-16T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "37": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "41": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "42": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "43": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "44": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "45": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "46": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-06T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "47": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "51": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "52": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "53": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "54": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "55": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "56": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-16T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "57": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "61": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "62": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "63": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "64": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "65": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "66": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-06T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "67": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "71": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "72": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "73": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "74": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "75": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "76": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-16T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "77": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "81": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "82": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "83": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "84": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "85": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "86": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-06T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "87": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "91": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "92": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "CUSTOMS",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "OUT_FOR_DELIVERY",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "93": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "94": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "95": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "96": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-16T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "97": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "101": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "102": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "103": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "104": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "105": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "106": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-06T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "107": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "111": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "112": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "113": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "114": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "115": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "116": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-16T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "117": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "121": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "122": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "123": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-03T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "124": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-04T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "125": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-05T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "126": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-06T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "127": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-07T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "131": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-11T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "132": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-12T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "133": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-13T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "134": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-14T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "135": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-15T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "136": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-16T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "137": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-17T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "141": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-01T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ],
+    "142": [
+      {
+        "status": "DRAFT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "BOOKED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "EXPORT_CLEARED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "IN_TRANSIT",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "ARRIVED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      },
+      {
+        "status": "DELIVERED",
+        "note": "Pembaruan proses operasional",
+        "timestamp": "2026-11-02T08:00:00+00:00",
+        "userId": 2,
+        "document": {
+          "number": ""
+        }
+      }
+    ]
+  },
+  "recommendationActions": {
+    "Pelabuhan dan Terminal": {
+      "status": "Selesai",
+      "owner": "Operasional",
+      "targetDate": "",
+      "completedDate": "",
+      "note": "",
+      "updatedAt": "2026-11-08T03:36:34.757554+00:00",
+      "updatedBy": null
+    }
+  },
+  "operationalBaselineVersion": 1
+}

@@ -1,0 +1,18 @@
+/* Lapisan konsistensi pengalaman pengguna: tidak mengubah struktur template halaman. */
+button { transition: transform .16s ease, box-shadow .16s ease, background .16s ease, border-color .16s ease; }
+button:not(:disabled) { cursor: pointer; }
+button:disabled { cursor: wait; opacity: .68; }
+.primary:not(:disabled):active, .table-edit:not(:disabled):active, .table-detail:not(:disabled):active { transform: translateY(1px); }
+input, select, textarea, button { font: inherit; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible { outline: 3px solid rgba(66, 139, 164, .24); outline-offset: 2px; }
+.form-message { min-height: 18px; margin: 0; color: #a34f4f; font-size: 12px; line-height: 1.45; }
+.form-message:not(:empty) { padding-top: 3px; }
+.workspace > * { min-width: 0; }
+.content > header { justify-content: flex-end; }
+.panel, .shipment-list, .recommendation-table-panel { background-clip: padding-box; }
+.page-title, .clean-heading, .analysis-heading, .ahp-heading, .recommendation-heading, .report-heading, .shipment-heading { scroll-margin-top: 96px; }
+@media (max-width: 720px) {
+  .workspace { overflow-x: hidden; }
+  .panel-title { padding-left: 17px; padding-right: 17px; }
+  .form-message { font-size: 11px; }
+}

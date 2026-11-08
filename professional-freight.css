@@ -1,0 +1,38 @@
+/* Final visual layer: restrained, practical freight-forwarding interface. */
+:root { --ink:#18384d; --muted:#6e8290; --navy:#10354e; --bg:#f4f7f8; --card:#fff; --line:#dbe5e9; --accent:#17617d; --accent-dark:#104b63; --accent-soft:#e9f3f6; --blue-soft:#edf5f8; }
+body { background:var(--bg); color:var(--ink); font-family:"Segoe UI",Arial,sans-serif; font-size:14px; }
+.eyebrow { color:#31738d; font-size:10px; letter-spacing:1.35px; }.primary { border-radius:6px; background:var(--accent); box-shadow:none; }.primary:hover { background:var(--accent-dark); }.secondary,.table-edit,.table-detail { border-radius:6px!important; box-shadow:none!important; }
+/* A compact, information-dense sidebar suited to day-to-day operations. */
+.sidebar { width:258px; padding:26px 20px 18px; background:#10394d; color:#c9d9df; }.content { width:calc(100% - 258px); margin-left:258px; }.company-lockup { gap:10px; }.company-lockup i { border-color:#6fa9ba; color:#dcecf0; }.company-lockup b,.company-lockup strong { color:#f3f8fa; }.logo-on-dark small { color:#86acb8!important; letter-spacing:1.05px; }.sidebar nav { gap:3px; }.sidebar nav button { display:flex; align-items:center; min-height:41px; border-radius:5px; color:#c1d1d7; font-size:13px; }.sidebar nav button:hover { background:rgba(255,255,255,.08); }.sidebar nav button.active { position:relative; background:#f8fbfc; color:#175d79; }.sidebar nav button.active::before { position:absolute; left:0; top:9px; bottom:9px; width:3px; border-radius:0 2px 2px 0; background:#2f8aa6; content:""; }.sidebar .nav-group { margin:22px 10px 6px; color:#7fa3af; font-size:9px; letter-spacing:1.25px; }.nav-icon { display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; margin-right:11px; }.nav-icon svg { display:block; width:16px; height:16px; }.sidebar-footer { margin-left:2px; margin-right:2px; }
+header { height:68px; padding:0 34px; border-color:#dbe5e9; background:rgba(255,255,255,.97); backdrop-filter:none; }.workspace { max-width:1640px; padding:31px 34px 48px; }.profile-account { border-radius:5px; }.avatar { border-radius:50%; background:#e7f2f5; color:#20667c; }.logout { border-radius:5px; }
+.hero,.page-title { margin-bottom:23px; }.hero h1,.page-title h1,.clean-heading h1 { color:#163c54; font-size:30px; font-weight:700; letter-spacing:-.65px; }.hero em { color:inherit; }.hero p:not(.eyebrow),.page-title p:not(.eyebrow) { color:#718695; }.clean-heading>span,.pill { border-radius:5px; background:#eaf4f5; color:#17617d; }
+/* Cards: flat, bordered and legible rather than overly decorative. */
+.panel,.kpi,.dash-kpi,.dashboard-filter,.report-card,.attention-list { border-color:#dbe5e9; border-radius:8px; box-shadow:none; }.panel-title { padding:19px 21px 12px; }.panel-title h2,.delay-form h2,.factor-guide h2,.report-card h2 { color:#1a4057; font-size:16px; }.kpi,.dash-kpi { border-radius:8px; }.kpi.teal { border-top:3px solid #3182a0; }.kpi.mint { border-color:#d9e8e6; background:#fbfdfd; }.kpi.mint strong { color:#17617d; }.dash-kpi>span { border-radius:6px; }.dashboard-filter { border-radius:8px; }.dashboard-filter select,.login-form input,.field input,.field select,.field textarea { border-radius:5px; }
+/* Tables carry the visual hierarchy, as in mature freight back-office systems. */
+th { padding:13px 14px; background:#f1f5f6; color:#54707e; font-size:10px; letter-spacing:.25px; } td { padding:14px; border-color:#e6edef; } tbody tr:hover { background:#f8fbfc; } td strong { color:#193e54; }.tag { border-radius:4px; background:#eaf4f6; color:#23667d; }.status,.process-status { border-radius:10px; font-weight:700; }.status.delay { background:#fff0ef; color:#ba534f; }.status.pending { background:#eef3f5; color:#687e88; }.table-edit,.table-detail { border-color:#cddfe5!important; color:#17617d!important; background:#fff!important; }.table-detail { background:#f2f8fa!important; }.search,.attention-list-top label { border-radius:5px; background:#fff; }
+.bar-row i,.clean-bars i b { background:#2f7fa4; }.monitoring-flow,.dashboard-caption { border-radius:8px; }.factor-guide { border:1px solid #d6e6eb; border-radius:8px; background:#edf6f8; }.notice { border-radius:7px; background:#f8fbfc; }.notice strong,.notice b { color:#1a607b; }
+/* Login remains polished but no longer resembles a marketing landing page. */
+.login-intro { background:linear-gradient(145deg,#123c57 0%,#1d637e 100%); color:#fff; }.login-intro .logo-on-dark small { color:#b8d2db!important; }.login-intro h1 { letter-spacing:-1px; }.login-intro em { color:#d9edf3; }.intro-copy,.intro-foot { color:#c3d7df; }.login-panel { background:#fff; }.login-form h2 { color:#163c54; }
+.shipment-modal,.modal-backdrop { background:rgba(13,37,50,.52); backdrop-filter:blur(2px); }.shipment-editor,.process-update-modal > section,.save-confirmation-dialog { border-radius:9px; box-shadow:0 16px 38px rgba(17,52,71,.20); }
+@media(max-width:1050px){.sidebar{width:220px}.content{width:calc(100% - 220px);margin-left:220px}}@media(max-width:720px){.sidebar{width:auto}.content{width:auto;margin-left:0}.workspace{padding:24px 16px 40px}.sidebar nav button{min-height:auto}}
+
+/* Webflow-inspired freight character: clear navy hierarchy, a warm cargo accent,
+   and practical editorial spacing. It remains an internal operations app. */
+:root { --freight-navy:#102f43; --freight-blue:#1e6686; --freight-gold:#d99a37; }
+.seatrack-login .seatrack-intro { background-image:linear-gradient(105deg,rgba(10,39,57,.91) 0%,rgba(14,55,76,.71) 56%,rgba(12,42,58,.46) 100%),url('login-harbor-v2.png'); background-position:center; }
+.seatrack-login .seatrack-intro > div:nth-of-type(2) { border-left:2px solid var(--freight-gold); }
+.seatrack-login .seatrack-intro h1 { font-family:Georgia,"Times New Roman",serif; font-weight:700; letter-spacing:-1.2px; }
+.seatrack-login .seatrack-intro h1 small { font-family:"Segoe UI",Arial,sans-serif; font-weight:500; }
+.seatrack-login .login-panel { background:#fff; }
+.seatrack-login .login-form .eyebrow { color:#23617a; }.seatrack-login .login-form h2 { font-size:30px; font-weight:700; }
+.seatrack-login .login-form .primary { border-radius:5px; background:var(--freight-navy); box-shadow:none; }.seatrack-login .login-form .primary:hover { background:#1a5873; }
+
+.sidebar { background:var(--freight-navy); }.sidebar nav button.active { color:var(--freight-navy); }.sidebar nav button.active::before { background:var(--freight-gold); }
+.sidebar .nav-group { color:#91b0bc; }.sidebar-footer strong { color:#f8fbfc; }
+.hero h1,.page-title h1,.clean-heading h1 { font-family:Georgia,"Times New Roman",serif; font-weight:700; }
+.hero .eyebrow,.page-title .eyebrow,.clean-heading .eyebrow { color:#1f6b87; }
+.hero .primary,.clean-heading .primary { background:var(--freight-navy); }.hero .primary:hover,.clean-heading .primary:hover { background:#1d5d78; }
+.dashboard-filter { border-left:3px solid #d99a37; }.dashboard-filter .primary { background:var(--freight-navy); }
+.panel-title { border-bottom:1px solid #edf2f3; }.panel-title h2 { font-weight:700; }
+.dash-kpi { border-top:2px solid transparent; }.dash-kpi.blue { border-top-color:#2f7fa4; }.dash-kpi.green { border-top-color:#4a9a75; }.dash-kpi.red { border-top-color:#c96761; }.dash-kpi.violet { border-top-color:#7b68af; }
+.attention-heading h1,.shipment-detail-heading h1 { font-family:Georgia,"Times New Roman",serif; }

@@ -1,0 +1,5 @@
+.editor-host:not(:empty){position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:28px;background:rgba(15,43,55,.48);backdrop-filter:blur(3px)}
+.editor-host .shipment-editor{width:min(900px,100%);max-height:calc(100vh - 56px);overflow:auto;padding:2px 22px 22px;box-shadow:0 24px 60px rgba(6,30,43,.28)}
+.editor-host .shipment-editor .panel-title{position:sticky;top:0;z-index:1;padding:20px 0 13px;background:#fff}
+.editor-host .close-editor{width:30px;height:30px;font-size:22px;line-height:1}
+@media(max-width:760px){.editor-host:not(:empty){padding:14px}.editor-host .shipment-editor{max-height:calc(100vh - 28px)}}

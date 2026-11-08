@@ -1,0 +1,95 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin Sales",
+      "email": "admin@freight.id",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "name": "Varin Ferninda",
+      "email": "varin@freight.id",
+      "password": "sales123",
+      "role": "sales"
+    },
+    {
+      "id": 3,
+      "name": "Budi Manager",
+      "email": "budi@freight.id",
+      "password": "manager123",
+      "role": "manager"
+    }
+  ],
+  "leads": [
+    {
+      "id": 1,
+      "company": "PT Maju Jaya",
+      "contactName": "Andi Wijaya",
+      "phone": "081234567890",
+      "email": "andi@majujaya.com",
+      "service": "Sea Freight",
+      "origin": "Jakarta",
+      "destination": "Singapore",
+      "status": "Hot",
+      "followUpDate": "2026-11-08",
+      "note": "Membutuhkan pengiriman barang elektronik",
+      "createdAt": "2026-11-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "company": "CV Sentosa Cargo",
+      "contactName": "Sari Dewi",
+      "phone": "082345678901",
+      "email": "sari@sentosacargo.id",
+      "service": "Air Freight",
+      "origin": "Bandung",
+      "destination": "Dubai",
+      "status": "Warm",
+      "followUpDate": "2026-11-10",
+      "note": "Butuh estimasi tarif untuk 2 shipment",
+      "createdAt": "2026-11-02T08:30:00.000Z"
+    }
+  ],
+  "quotations": [
+    {
+      "id": 1,
+      "leadId": 1,
+      "company": "PT Maju Jaya",
+      "service": "Sea Freight",
+      "route": "Jakarta - Singapore",
+      "total": 8200000,
+      "status": "Sent",
+      "validUntil": "2026-11-15",
+      "createdAt": "2026-11-03T09:15:00.000Z"
+    },
+    {
+      "id": 2,
+      "leadId": 2,
+      "company": "CV Sentosa Cargo",
+      "service": "Air Freight",
+      "route": "Bandung - Dubai",
+      "total": 14500000,
+      "status": "Pending",
+      "validUntil": "2026-11-20",
+      "createdAt": "2026-11-04T11:00:00.000Z"
+    }
+  ],
+  "salesTargets": [
+    {
+      "id": 1,
+      "salesName": "Rina Sales",
+      "month": "November 2026",
+      "target": 150000000,
+      "achieved": 98000000
+    },
+    {
+      "id": 2,
+      "salesName": "Budi Manager",
+      "month": "November 2026",
+      "target": 200000000,
+      "achieved": 142000000
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+.save-confirmation {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(14, 47, 59, .46);
+  backdrop-filter: blur(4px);
+}
+
+.save-confirmation-card {
+  width: min(100%, 490px);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid #dce9ed;
+  border-radius: 20px;
+  background: #fff;
+  color: #173f54;
+  box-shadow: 0 24px 70px rgba(8, 35, 47, .28);
+}
+
+.save-confirmation-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #e2f3ee;
+  color: #247c67;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.save-confirmation-card .eyebrow { margin: 2px 0 5px; }
+.save-confirmation-card h2 { margin: 0; font-size: 22px; }
+.save-confirmation-card p:not(.eyebrow) { margin: 8px 0 0; color: #668092; line-height: 1.55; }
+.save-confirmation-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 10px; margin-top: 6px; }
+.save-confirmation-actions button { min-width: 118px; }
+.save-confirmation-actions .secondary { padding: 11px 16px; border: 1px solid #cddfe5; border-radius: 10px; background: #fff; color: #436475; font-weight: 700; }
+
+@media (max-width: 520px) {
+  .save-confirmation { padding: 16px; }
+  .save-confirmation-card { padding: 22px; }
+  .save-confirmation-actions { flex-direction: column-reverse; }
+  .save-confirmation-actions button { width: 100%; }
+}

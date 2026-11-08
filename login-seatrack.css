@@ -1,0 +1,32 @@
+body:has(.seatrack-login) { background:#eaf0f4; }
+.login-page.seatrack-login { width:min(1160px,calc(100% - 48px)); min-height:650px; margin:32px auto; overflow:hidden; grid-template-columns:1.04fr .96fr; border:1px solid #d6e0e4; border-radius:24px; box-shadow:0 22px 60px rgba(20,57,72,.16); background:#fff; }
+.seatrack-login .seatrack-intro { justify-content:flex-start; gap:0; min-height:650px; padding:46px 58px; color:#fff; background-image:linear-gradient(180deg,rgba(6,51,88,.82) 0%,rgba(7,56,94,.5) 43%,rgba(4,29,51,.76) 100%),url('login-harbor-v2.png'); background-size:cover; background-position:center; }
+.seatrack-login .seatrack-intro:before { inset:0; width:auto; height:auto; border:0; border-radius:0; background:linear-gradient(120deg,rgba(5,43,76,.2),transparent); box-shadow:none; }
+.seatrack-login .seatrack-intro:after { display:none; }
+.seatrack-login .seatrack-intro .brand { margin-bottom:auto; }
+.seatrack-login .seatrack-intro .company-lockup { opacity:1; transform:scale(1.2); transform-origin:left top; }
+.seatrack-login .seatrack-intro .logo-on-dark small { margin-top:5px; color:#d9eef5; font-size:10px; letter-spacing:2.4px; }
+.seatrack-login .seatrack-intro .eyebrow { display:none; }
+.seatrack-login .seatrack-intro h1 { margin:12px 0 14px; color:#fff; font-size:clamp(39px,4vw,55px); letter-spacing:-1.7px; line-height:1.05; }
+.seatrack-login .seatrack-intro h1 small { display:block; margin-top:13px; color:#f0f7fa; font-size:17px; font-weight:500; letter-spacing:-.2px; line-height:1.43; }
+.seatrack-login .seatrack-intro .voyage-visual { margin-top:auto; color:#d8eef4; }
+.seatrack-login .seatrack-intro .story-tags { margin-top:17px; }
+.seatrack-login .seatrack-intro .story-tags span { border-color:rgba(235,248,252,.35); color:#edf8fb; background:rgba(255,255,255,.08); }
+.seatrack-login .seatrack-intro .intro-foot { display:none; }
+.seatrack-login .login-panel { padding:55px 48px; background:#fbfcfe; }
+.seatrack-login .login-form { width:min(100%,355px); }
+.seatrack-login .login-form .eyebrow { margin-bottom:10px; color:#527382; font-size:9px; }
+.seatrack-login .login-form h2 { margin:0 0 9px; color:#173f56; font-size:28px; letter-spacing:-.8px; }
+.seatrack-login .login-form > .muted { margin-bottom:30px; color:#738891; }
+.seatrack-login .login-form label { margin-top:18px; color:#254a59; }
+.seatrack-login .login-form input { padding:13px 14px; border-color:#d6e0e5; border-radius:9px; background:#fff; }
+.seatrack-login .login-form .primary { margin-top:27px; padding:13px; border-radius:8px; background:#155a8a; box-shadow:0 8px 18px rgba(21,90,138,.16); }
+.seatrack-login .login-form .primary:hover { background:#0d4a76; }
+.seatrack-login .seatrack-intro > div:nth-of-type(2) { width:min(100%,450px); margin-top:auto; margin-bottom:90px; padding:0 0 0 21px; border-left:3px solid rgba(205,234,244,.88); text-shadow:0 2px 14px rgba(4,28,48,.28); }
+.seatrack-login .seatrack-intro h1 { margin:0; font-size:clamp(42px,3.7vw,54px); font-weight:750; letter-spacing:-1.5px; }
+.seatrack-login .seatrack-intro h1 small { max-width:400px; margin-top:14px; color:#edf7fa; font-size:17px; font-weight:550; letter-spacing:-.1px; line-height:1.48; }
+.seatrack-login .seatrack-intro .voyage-visual, .seatrack-login .seatrack-intro .story-tags { display:none; }
+.seatrack-login .login-panel { align-content:center; }
+.seatrack-login .login-form { transform:translateY(-5px); }
+.seatrack-login .login-form:after { display:none; }
+@media(max-width:760px) { body:has(.seatrack-login){background:#fff}.login-page.seatrack-login{width:100%;min-height:100vh;margin:0;border:0;border-radius:0;grid-template-columns:1fr}.seatrack-login .seatrack-intro{min-height:350px;padding:32px}.seatrack-login .seatrack-intro .eyebrow{margin-top:28px}.seatrack-login .seatrack-intro h1{font-size:39px}.seatrack-login .seatrack-intro .voyage-visual,.seatrack-login .seatrack-intro .story-tags{display:none}.seatrack-login .login-panel{padding:38px 26px}.seatrack-login .login-form{width:100%} }
