@@ -36,3 +36,4 @@ th { padding:13px 14px; background:#f1f5f6; color:#54707e; font-size:10px; lette
 .panel-title { border-bottom:1px solid #edf2f3; }.panel-title h2 { font-weight:700; }
 .dash-kpi { border-top:2px solid transparent; }.dash-kpi.blue { border-top-color:#2f7fa4; }.dash-kpi.green { border-top-color:#4a9a75; }.dash-kpi.red { border-top-color:#c96761; }.dash-kpi.violet { border-top-color:#7b68af; }
 .attention-heading h1,.shipment-detail-heading h1 { font-family:Georgia,"Times New Roman",serif; }
+.render-error{max-width:620px;margin:12vh auto;padding:42px;border:1px solid #d9e4e8;border-radius:14px;background:#fff;box-shadow:0 12px 32px rgba(18,57,76,.08);text-align:center}.render-error h1{margin:0 0 10px;color:#173f55}.render-error p{margin:0 0 22px;color:#678094}.render-error button{min-width:190px}

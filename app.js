@@ -36,7 +36,7 @@ async function request(url, options = {}) {
   const response = await fetch(url, { ...options, headers: { ...options.headers, ...(state.token ? { Authorization: `Bearer ${state.token}` } : {}) } });
   const isJson = response.headers.get('content-type')?.includes('application/json');
   const result = response.status === 204 ? null : (isJson ? await response.json() : null);
-  if (!response.ok) throw new Error(result?.message || `Permintaan gagal (${response.status})`);
+  if (!response.ok) { const error = new Error(result?.message || `Permintaan gagal (${response.status})`); error.status = response.status; throw error; }
   return result;
 }
 async function loadDashboard() { state.dashboard = await request('/api/dashboard'); }
@@ -75,7 +75,8 @@ function navIcon(view) {
     analysis: '<path d="M5 20V10M12 20V4M19 20v-7"></path><path d="M3 20h18"></path>',
     ahp: '<path d="m12 3 2.75 5.57 6.15.9-4.45 4.34 1.05 6.14L12 17.06 6.5 19.95l1.05-6.14L3.1 9.47l6.15-.9L12 3Z"></path>',
     recommendations: '<path d="m5 12 4 4L19 6"></path>',
-    reports: '<path d="M6 3h9l3 3v15H6z"></path><path d="M15 3v4h4M9 12h6M9 16h6"></path>'
+    reports: '<path d="M6 3h9l3 3v15H6z"></path><path d="M15 3v4h4M9 12h6M9 16h6"></path>',
+    manual: '<path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17.5A2.5 2.5 0 0 0 17.5 17H4z"></path><path d="M4 4.5V20a2 2 0 0 0 2 2h13.5M8 6h8M8 10h8"></path>'
   };
   return `<span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths[view] || paths.overview}</svg></span>`;
 }
@@ -88,16 +89,19 @@ function createShell() {
   sidebarFooter.classList.add('sidebar-footer');
   sidebarFooter.innerHTML = '<strong>INS SeaTrack</strong><span>Shipment Intelligence</span><small>© 2026 PT Intisarana Persada</small>';
   const nav = root.querySelector('nav');
+  nav.querySelector('[data-view="reports"]').insertAdjacentHTML('afterend', `<button data-view="manual">${navIcon('manual')} Panduan penggunaan</button>`);
   nav.querySelector('[data-view="delays"]').insertAdjacentHTML('afterend', `<button data-view="analysis">${navIcon('≋')} Analisis kendala</button>`);
   nav.querySelector('[data-view="ahp"]').insertAdjacentHTML('afterend', `<button data-view="recommendations">${navIcon('✓')} Rekomendasi perbaikan</button>`);
   Object.assign(navigation, { overview: ['▦', '1. Dashboard'], shipments: ['≡', '2. Data shipment'], delays: ['!', '3. Input kendala'], analysis: ['≋', '4. Analisis kendala'], ahp: ['◈', '5. Prioritas AHP'], recommendations: ['✓', '6. Rekomendasi perbaikan'], reports: ['↗', '7. Laporan'] });
-  root.querySelectorAll('[data-view]').forEach((button) => { const [, label] = navigation[button.dataset.view]; button.innerHTML = navIcon(button.dataset.view) + label.replace(/^\d+\.\s*/, ''); button.addEventListener('click', () => { state.view = button.dataset.view; renderApp(); }); });
-  const menuNames = { overview: 'Dashboard', shipments: 'Data shipment', delays: 'Catat kendala', analysis: 'Analisis kendala', ahp: 'Prioritas AHP', recommendations: 'Rekomendasi perbaikan', reports: 'Laporan' };
+  navigation.manual = ['8. Panduan penggunaan'];
+  root.querySelectorAll('[data-view]').forEach((button) => { const label = navigation[button.dataset.view]?.[1] || button.textContent || 'Halaman'; button.innerHTML = navIcon(button.dataset.view) + String(label).replace(/^\d+\.\s*/, ''); button.addEventListener('click', () => { state.view = button.dataset.view; renderApp(); }); });
+  const menuNames = { overview: 'Dashboard', shipments: 'Data shipment', delays: 'Catat kendala', analysis: 'Analisis kendala', ahp: 'Prioritas AHP', recommendations: 'Rekomendasi perbaikan', reports: 'Laporan', manual: 'Panduan penggunaan' };
   root.querySelectorAll('[data-view]').forEach((button) => { button.innerHTML = navIcon(button.dataset.view) + menuNames[button.dataset.view]; });
   root.querySelector('.nav-label').textContent = 'NAVIGASI';
   nav.querySelector('[data-view="shipments"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">OPERASIONAL</p>');
   nav.querySelector('[data-view="analysis"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">ANALISIS</p>');
   nav.querySelector('[data-view="reports"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">RINGKASAN</p>');
+  nav.querySelector('[data-view="manual"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">BANTUAN</p>');
   root.querySelector(`[data-view="${state.view}"]`)?.classList.add('active');
   const profile = root.querySelector('.profile');
   const profileAccount = document.createElement('button');
@@ -108,7 +112,7 @@ function createShell() {
   root.querySelector('.logout').addEventListener('click', async () => { await request('/api/logout', { method: 'POST' }); localStorage.removeItem('ins-seatrack-session'); localStorage.removeItem('ins-seatrack-view'); state.user = null; state.token = null; state.dashboard = null; renderApp(); });
   return root;
 }
-function viewTitle() { return ({ overview: 'Dashboard overview', shipments: 'Data shipment', attention: 'Perlu tindakan', detail: 'Detail shipment', delays: 'Input kendala', analysis: 'Analisis kendala', ahp: 'Analisis prioritas AHP', recommendations: 'Rekomendasi perbaikan', reports: 'Laporan operasional', settings: 'Pengaturan' })[state.view]; }
+function viewTitle() { return ({ overview: 'Dashboard overview', shipments: 'Data shipment', attention: 'Perlu tindakan', detail: 'Detail shipment', delays: 'Input kendala', analysis: 'Analisis kendala', ahp: 'Analisis prioritas AHP', recommendations: 'Rekomendasi perbaikan', reports: 'Laporan operasional', manual: 'Panduan penggunaan', settings: 'Pengaturan' })[state.view]; }
 function createKpi(label, value, note, tone) { return `<article class="kpi ${tone || ''}"><p>${label}</p><strong>${value}</strong><span>${note}</span></article>`; }
 function barList(title, subtitle, list) {
   const maximum = Math.max(...list.map((item) => item.value), 1);
@@ -514,6 +518,61 @@ function buildAhpTemplate(page) {
   page.innerHTML = `<section class="ahp-heading"><div><p class="eyebrow">INS SEATRACK · ANALISIS KEPUTUSAN</p><h1>Prioritas AHP</h1><p>Hasil pembobotan faktor penyebab keterlambatan pengiriman laut.</p></div><div class="ahp-actions"><span class="ahp-state ${hasWeights ? 'ready' : ''}">${hasWeights ? 'Hasil AHP tersedia' : 'Menunggu hasil AHP final'}</span><button class="primary ahp-edit-button" type="button">${hasWeights ? 'Edit bobot AHP' : 'Input hasil penelitian'}</button></div></section><section class="ahp-template-layout"><section class="panel ahp-priority-panel"><div class="ahp-panel-title"><div><h2>Rangking prioritas faktor</h2><p>${hasWeights ? 'Urutan ditampilkan dari bobot tertinggi ke terendah.' : 'Kriteria tersedia; urutan prioritas aktif setelah bobot hasil AHP disimpan.'}</p></div></div><div class="ahp-table-head"><span>Peringkat</span><span>Kriteria</span><span>Bobot</span><span aria-label="Visualisasi bobot"></span></div><div class="ahp-priority-list">${priorities.map((item, index) => { const weight = typeof item.weight === 'number' ? item.weight : null; const width = weight === null ? 0 : weight / maximum * 100; return `<div class="ahp-priority-row"><span class="ahp-rank">${hasWeights ? index + 1 : '—'}</span><strong>${escapeHTML(item.factor)}</strong><b>${weight === null ? '—' : weight.toFixed(3).replace('.', ',')}</b><i class="ahp-weight-track"><em style="width:${width}%"></em></i></div>`; }).join('')}</div></section><aside class="panel consistency-panel"><p class="eyebrow">VALIDASI AHP</p><h2>Uji Konsistensi</h2><div class="consistency-values"><div><span>CI</span><b>0,072</b></div><div><span>CR</span><b>${ratioText}</b></div></div><p class="consistency-note">Hasil perhitungan konsistensi dari pengolahan AHP pada penelitian.</p><div class="consistency-result ${hasRatio ? (isConsistent ? 'consistent' : 'review') : 'waiting'}"><strong>${!hasRatio ? 'Menunggu hasil AHP' : (isConsistent ? 'Konsisten' : 'Perlu ditinjau')}</strong><span>${!hasRatio ? 'Masukkan CR final untuk validasi.' : (isConsistent ? 'CR ≤ 0,10' : 'CR > 0,10')}</span></div></aside></section>`;
 }
 
-function renderApp() { if (state.returnToAttention && state.view === 'shipments' && !state.editShipmentId) { state.returnToAttention = false; state.view = 'attention'; } app.replaceChildren(); if (!state.user) { app.appendChild(createLogin()); return; } localStorage.setItem('ins-seatrack-view', state.view); const shell = createShell(); const activePage = ({ overview, shipments, attention, detail, delays, analysis, ahp, recommendations, reports, settings })[state.view](); addResearchContext(activePage); syncWorkflow(activePage); buildCleanDashboard(activePage); buildShipmentDirectory(activePage); buildAnalysisTemplate(activePage); buildAhpTemplate(activePage); if (state.view === 'ahp') attachAHPEntry(activePage); shell.querySelector('.workspace').append(activePage); app.appendChild(shell); }
-async function restoreSession() { const saved = localStorage.getItem('ins-seatrack-session'); if (!saved) { renderApp(); return; } try { const session = JSON.parse(saved); state.token = session.token; state.user = session.user; state.view = localStorage.getItem('ins-seatrack-view') || 'overview'; await loadDashboard(); renderApp(); } catch (error) { localStorage.removeItem('ins-seatrack-session'); localStorage.removeItem('ins-seatrack-view'); state.token = null; state.user = null; state.dashboard = null; renderApp(); } }
+function manual() {
+  const page = document.createElement('div');
+  const steps = [
+    ['1', 'Masuk ke sistem', 'Masukkan email dan password akun operasional. Setelah berhasil masuk, Anda berada di Dashboard.', 'overview'],
+    ['2', 'Tinjau Dashboard', 'Periksa ringkasan shipment, status On Time/Delay, proses pengiriman, dan bagian Perlu tindakan.', 'overview'],
+    ['3', 'Kelola Data Shipment', 'Cari berdasarkan nomor shipment, customer, atau rute. Gunakan Edit untuk memperbarui data dan Detail untuk melihat riwayat.', 'shipments'],
+    ['4', 'Perbarui proses shipment', 'Di Detail Shipment, pilih Update proses untuk mencatat tahapan berikutnya. Isi catatan proses; nomor dan lampiran dokumen bersifat opsional.', 'shipments'],
+    ['5', 'Catat kendala', 'Gunakan Catat kendala saat ada masalah atau keterlambatan. Cari nomor shipment, pilih tahapan serta faktor penyebab, kemudian simpan.', 'delays'],
+    ['6', 'Analisis dan prioritas', 'Analisis Kendala menunjukkan frekuensi masalah. Prioritas AHP menampilkan bobot penelitian untuk menentukan faktor yang perlu didahulukan.', 'analysis'],
+    ['7', 'Tindak lanjuti rekomendasi', 'Buka Rekomendasi perbaikan, tentukan penanggung jawab, lalu perbarui status tindak lanjut hingga selesai.', 'recommendations'],
+    ['8', 'Buat laporan', 'Gunakan Laporan untuk melihat rekap kinerja, kriteria kendala utama, lalu unduh atau cetak laporan untuk manajemen.', 'reports']
+  ];
+  page.innerHTML = `<section class="manual-heading"><div><p class="eyebrow">PANDUAN SISTEM</p><h1>Panduan penggunaan INS SeaTrack</h1><p>Alur kerja operasional untuk memantau shipment, mencatat kendala, dan menindaklanjuti perbaikan.</p></div><button class="secondary manual-print" type="button">Cetak panduan</button></section><section class="manual-start"><strong>Alur singkat</strong><span>Data shipment → Proses pengiriman → Kendala → Analisis → Rekomendasi → Laporan</span></section><section class="manual-grid">${steps.map(([number, title, description, view]) => `<article class="manual-step"><span>${number}</span><div><h2>${title}</h2><p>${description}</p><button type="button" data-guide-view="${view}">Buka halaman</button></div></article>`).join('')}</section><section class="manual-notes"><h2>Ketentuan penting</h2><ul><li>Status On Time atau Delay dihitung setelah <strong>actual arrival</strong> diisi.</li><li>Tahapan proses shipment dicatat secara berurutan agar riwayat pengiriman valid.</li><li>Setiap tombol simpan akan meminta konfirmasi sebelum data diperbarui.</li><li>Pengaturan akun tersedia melalui profil di kanan atas untuk mengganti password.</li></ul></section>`;
+  page.querySelectorAll('[data-guide-view]').forEach((button) => button.addEventListener('click', () => { state.view = button.dataset.guideView; renderApp(); }));
+  page.querySelector('.manual-print').addEventListener('click', () => window.print());
+  return page;
+}
+function renderApp() {
+  if (state.returnToAttention && state.view === 'shipments' && !state.editShipmentId) { state.returnToAttention = false; state.view = 'attention'; }
+  app.replaceChildren();
+  if (!state.user) { app.appendChild(createLogin()); return; }
+  const pages = { overview, shipments, attention, detail, delays, analysis, ahp, recommendations, reports, manual, settings };
+  if (!pages[state.view]) state.view = 'overview';
+  localStorage.setItem('ins-seatrack-view', state.view);
+  try {
+    const shell = createShell();
+    const activePage = pages[state.view]();
+    addResearchContext(activePage); syncWorkflow(activePage); buildCleanDashboard(activePage); buildShipmentDirectory(activePage); buildAnalysisTemplate(activePage); buildAhpTemplate(activePage);
+    if (state.view === 'ahp') attachAHPEntry(activePage);
+    shell.querySelector('.workspace').append(activePage); app.appendChild(shell);
+  } catch (error) {
+    console.error('Gagal merender halaman:', error);
+    app.innerHTML = `<main class="render-error"><h1>Halaman belum dapat dimuat</h1><p>${escapeHTML(error.message || 'Terjadi kesalahan tampilan.')}</p><button class="primary" type="button">Kembali ke Dashboard</button></main>`;
+    app.querySelector('button').addEventListener('click', () => { state.view = 'overview'; renderApp(); });
+  }
+}
+async function restoreSession() {
+  const saved = localStorage.getItem('ins-seatrack-session');
+  if (!saved) { renderApp(); return; }
+  try {
+    const session = JSON.parse(saved);
+    if (!session?.token || !session?.user) throw new Error('Data sesi tidak lengkap');
+    state.token = session.token; state.user = session.user;
+    state.view = localStorage.getItem('ins-seatrack-view') || 'overview';
+    await loadDashboard();
+    renderApp();
+  } catch (error) {
+    console.error('Gagal memulihkan sesi:', error);
+    if (error.status === 401) {
+      localStorage.removeItem('ins-seatrack-session'); localStorage.removeItem('ins-seatrack-view');
+      state.token = null; state.user = null; state.dashboard = null; renderApp();
+      return;
+    }
+    app.innerHTML = `<main class="render-error"><h1>Koneksi sementara bermasalah</h1><p>Sesi Anda tetap tersimpan. Periksa koneksi lalu muat ulang halaman.</p><button class="primary" type="button">Coba lagi</button></main>`;
+    app.querySelector('button').addEventListener('click', restoreSession);
+  }
+}
 restoreSession();

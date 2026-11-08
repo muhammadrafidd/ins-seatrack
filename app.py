@@ -19,7 +19,10 @@ from werkzeug.utils import secure_filename
 
 ROOT = Path(__file__).resolve().parent
 STATIC_DIR = ROOT / "public" if (ROOT / "public").is_dir() else ROOT
-DATA_DIR = Path(os.environ.get("CRM_DATA_DIR", ROOT / "data"))
+# Local development uses data/. A flattened Railway/GitHub upload keeps the
+# JSON files beside app.py, while a Railway Volume can be selected explicitly
+# through CRM_DATA_DIR.
+DATA_DIR = Path(os.environ["CRM_DATA_DIR"]) if os.environ.get("CRM_DATA_DIR") else (ROOT / "data" if (ROOT / "data").is_dir() else ROOT)
 USERS_FILE = DATA_DIR / "db.json"
 DASHBOARD_FILE = DATA_DIR / "dashboard.json"
 SOURCE_FILE = DATA_DIR / "source" / "inbound-outbound.xlsx"
@@ -55,7 +58,10 @@ AHP_TEMPLATE_WEIGHTS = {
 }
 AHP_TEMPLATE_RATIO = 0.081
 
-app = Flask(__name__, static_folder=str(STATIC_DIR), static_url_path="")
+# Static files are served explicitly by frontend() below. Disabling Flask's
+# implicit root static route prevents it from intercepting SPA URLs such as
+# /dashboard and returning a 404 before the frontend fallback runs.
+app = Flask(__name__, static_folder=None)
 
 
 def write_json(file: Path, data: Any) -> None:
@@ -441,13 +447,17 @@ def process_document(shipment_id, event_index):
     events = read_json(DASHBOARD_FILE).get("shipmentProcesses", {}).get(str(shipment_id), [])
     if event_index < 0 or event_index >= len(events) or not events[event_index].get("document", {}).get("filePath"):
         return jsonify(message="Lampiran tidak ditemukan"), 404
-    return send_from_directory(UPLOAD_DIR / str(shipment_id), events[event_index]["document"]["filePath"], as_attachment=True, download_name=events[event_index]["document"]["fileName"])
+    directory = UPLOAD_DIR / str(shipment_id)
+    filename = events[event_index]["document"]["filePath"]
+    if not (directory / filename).is_file():
+        return jsonify(message="Lampiran tidak tersedia pada penyimpanan server"), 404
+    return send_from_directory(directory, filename, as_attachment=True, download_name=events[event_index]["document"]["fileName"])
 
 
 @app.put("/api/shipments/<int:shipment_id>/status")
 def update_shipment_status(shipment_id):
     payload = request.get_json(silent=True) or {}
-    source_shipment = next((item for item in parse_shipments() if item["id"] == shipment_id), None)
+    source_shipment = next((item for item in model()[0] if item["id"] == shipment_id), None)
     if not source_shipment:
         return jsonify(message="Shipment tidak ditemukan"), 404
     status = payload.get("status")
@@ -466,11 +476,14 @@ def update_shipment_status(shipment_id):
             delay_days = max(0, (arrival - eta).days)
             status = "Delay" if delay_days >= 1 else "On Time"
     database = read_json(DASHBOARD_FILE)
-    database.setdefault("shipmentUpdates", {})[str(shipment_id)] = {"status": status, "actualArrival": actual_arrival or None, "statusNote": note.strip(), "delayDays": delay_days}
+    # Keep edits made from Data Shipment (customer, route, ETA, etc.) when
+    # the operational team subsequently updates actual arrival/status.
+    update = database.setdefault("shipmentUpdates", {}).setdefault(str(shipment_id), {})
+    update.update({"status": status, "actualArrival": actual_arrival or None, "statusNote": note.strip(), "delayDays": delay_days})
     if status == "On Time":
         database["delays"] = [item for item in database.get("delays", []) if item["shipmentId"] != shipment_id]
     write_json(DASHBOARD_FILE, database)
-    return jsonify(database["shipmentUpdates"][str(shipment_id)])
+    return jsonify(update)
 
 
 @app.put("/api/ahp")
