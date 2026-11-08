@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log*
+.DS_Store
+data/db.json
+data/dashboard.json
+data/sessions.json
+data/uploads/
