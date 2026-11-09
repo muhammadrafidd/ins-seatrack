@@ -4,6 +4,10 @@ const dashboardFilters = { route: 'Semua rute', status: 'Semua status' };
 const analysisFilters = { route: 'Semua rute', stage: 'Semua tahapan' };
 const shipmentProcessLabels = { DRAFT: 'Persiapan dokumen', BOOKED: 'Booking / Pickup', EXPORT_CLEARED: 'Dokumen ekspor selesai', IN_TRANSIT: 'Dalam pelayaran', ARRIVED: 'Tiba di tujuan', CUSTOMS: 'Proses customs', OUT_FOR_DELIVERY: 'Pengantaran lokal', DELIVERED: 'Delivered / POD' };
 const shipmentProcessFlow = (type) => type === 'OI' ? ['DRAFT', 'BOOKED', 'IN_TRANSIT', 'CUSTOMS', 'OUT_FOR_DELIVERY', 'DELIVERED'] : ['DRAFT', 'BOOKED', 'EXPORT_CLEARED', 'IN_TRANSIT', 'ARRIVED', 'DELIVERED'];
+const roleKey = () => state.user?.role === 'sales' ? 'operasional' : state.user?.role;
+const canOperate = () => ['admin', 'operasional'].includes(roleKey());
+const canManage = () => ['admin', 'manager'].includes(roleKey());
+const roleLabel = () => ({ admin: 'Administrator', operasional: 'Operasional', sales: 'Operasional', manager: 'Manager' }[state.user?.role] || 'Pengguna');
 
 const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
 const formatNumber = new Intl.NumberFormat('id-ID');
@@ -102,6 +106,8 @@ function createShell() {
   nav.querySelector('[data-view="analysis"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">ANALISIS</p>');
   nav.querySelector('[data-view="reports"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">RINGKASAN</p>');
   nav.querySelector('[data-view="manual"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">BANTUAN</p>');
+  if (!canOperate()) nav.querySelector('[data-view="delays"]')?.remove();
+  if (!canManage()) ['analysis', 'ahp', 'recommendations', 'reports'].forEach((view) => nav.querySelector(`[data-view="${view}"]`)?.remove());
   root.querySelector(`[data-view="${state.view}"]`)?.classList.add('active');
   const profile = root.querySelector('.profile');
   const profileAccount = document.createElement('button');
@@ -236,6 +242,10 @@ function detail() {
   processPanel.innerHTML = `<div class="process-heading"><div><p class="eyebrow">PROSES PENGIRIMAN</p><h2>${processHistory.length ? shipmentProcessLabels[processHistory[currentIndex].status] : 'Belum dimulai'}</h2><p>${shipment.shipmentType === 'OI' ? 'Alur inbound dengan tahapan customs bila diperlukan.' : 'Alur outbound dari persiapan hingga bukti penerimaan.'}</p></div>${nextStatus ? `<button class="primary update-process" type="button">Update proses</button>` : '<span class="process-complete">Proses selesai</span>'}</div><ol class="process-timeline">${processFlow.map((status, index) => { const event = processHistory[index]; return `<li class="${event ? 'done' : ''} ${index === currentIndex ? 'current' : ''}"><i></i><div><strong>${shipmentProcessLabels[status]}</strong><span>${event ? `${escapeHTML(event.note)} · ${new Date(event.timestamp).toLocaleString('id-ID')}` : 'Menunggu pembaruan'}</span></div></li>`; }).join('')}</ol>`;
   processPanel.querySelectorAll('.process-timeline li').forEach((line, index) => { const document = processHistory[index]?.document; if (!document) return; if (document.number) line.querySelector('div').insertAdjacentHTML('beforeend', `<small class="process-document-number">Dok: ${escapeHTML(document.number)}</small>`); if (document.filePath) line.querySelector('div').insertAdjacentHTML('beforeend', `<a class="process-document-link" href="/api/shipments/${shipment.id}/process-documents/${index}">Unduh lampiran</a>`); });
   page.querySelector('.detail-layout').insertAdjacentElement('afterend', processPanel);
+  if (!canOperate()) {
+    processPanel.querySelector('.update-process')?.remove();
+    page.querySelector('.add-delay')?.remove();
+  }
   processPanel.querySelector('.update-process')?.addEventListener('click', () => {
     const modal = document.createElement('div'); modal.className = 'shipment-modal process-modal';
     modal.innerHTML = `<section class="shipment-editor" role="dialog" aria-modal="true"><button class="close-editor" type="button" aria-label="Tutup">×</button><div class="panel-title"><div><p class="eyebrow">UPDATE PROSES</p><h2>${shipmentProcessLabels[nextStatus]}</h2><p>Catat proses berikutnya untuk membangun riwayat shipment.</p></div></div><form><label>Catatan proses<textarea name="note" maxlength="500" required placeholder="Contoh: Booking telah dikonfirmasi oleh shipping line."></textarea></label><div class="editor-actions"><button class="primary" type="submit">Simpan proses</button><p class="form-message"></p></div></form></section>`;
@@ -260,8 +270,11 @@ function detail() {
     detailHeading.appendChild(backButton);
     backButton.addEventListener('click', () => { state.returnToShipments = false; state.view = 'shipments'; renderApp(); });
   }
-  detailHeading.appendChild(page.querySelector('.add-delay'));
-  page.querySelector('.add-delay').addEventListener('click', () => { state.view = 'delays'; renderApp(); });
+  const addDelayButton = page.querySelector('.add-delay');
+  if (addDelayButton) {
+    detailHeading.appendChild(addDelayButton);
+    addDelayButton.addEventListener('click', () => { state.view = 'delays'; renderApp(); });
+  }
   return page;
 }
 
@@ -281,13 +294,16 @@ function recommendations() {
   const owners = { 'Dokumen Kepabeanan': 'Tim Dokumen', 'Koordinasi dan Komunikasi': 'Operasional', 'Pelabuhan dan Terminal': 'Operasional', 'Kapal dan Jadwal Pelayaran': 'Operasional', 'Peralatan dan Armada': 'Operasional', 'Kesiapan Barang': 'Customer Service', 'Sumber Daya Manusia': 'Manajer Operasional', 'Proses Operasional': 'Operasional', 'Kondisi Cuaca dan Lingkungan': 'Operasional' };
   const progress = [['Belum Dimulai', 'not-started'], ['Dalam Proses', 'in-progress'], ['Selesai', 'complete']];
   const ranked = state.dashboard.ahp.filter((item) => item.weight !== null && item.weight !== undefined).sort((a, b) => b.weight - a.weight);
-  const candidates = ranked.length ? ranked.slice(0, 3) : state.dashboard.delays.reduce((list, item) => list.some((entry) => entry.factor === item.factor) ? list : [...list, { factor: item.factor }], []).slice(0, 3);
+  // Rekomendasi hanya boleh muncul dari bobot AHP yang telah disimpan.
+  // Data kendala tetap menjadi bahan analisis, bukan pengganti hasil AHP.
+  const candidates = ranked.slice(0, 3);
   const page = document.createElement('div');
   page.innerHTML = `<section class="recommendation-heading"><div><p class="eyebrow">INS SEATRACK · TINDAK LANJUT</p><h1>Rekomendasi Perbaikan</h1><p>Tindak lanjut berdasarkan prioritas AHP.</p></div><span class="recommendation-count">${candidates.length} prioritas utama</span></section><section class="panel recommendation-table-panel">${candidates.length ? `<div class="recommendation-table-wrap"><table class="recommendation-table"><thead><tr><th>No.</th><th>Kriteria prioritas</th><th>Rekomendasi tindakan</th><th>Penanggung jawab</th><th>Status</th></tr></thead><tbody>${candidates.map((item, index) => { const [label, tone] = progress[index] || progress[0]; return `<tr><td><b class="recommendation-rank">${index + 1}</b></td><td><strong>${escapeHTML(item.factor)}</strong><small>Bobot ${item.weight !== undefined ? Number(item.weight).toFixed(3).replace('.', ',') : 'belum tersedia'}</small></td><td>${escapeHTML(actions[item.factor])}</td><td>${escapeHTML(owners[item.factor] || 'Operasional')}</td><td><span class="recommendation-status ${tone}">${label}</span></td></tr>`; }).join('')}</tbody></table></div><p class="recommendation-footnote">Urutan rekomendasi mengikuti bobot AHP yang tersimpan. Status tindak lanjut dapat menjadi dasar evaluasi manajerial berikutnya.</p>` : '<div class="empty">Masukkan hasil AHP untuk menampilkan rekomendasi perbaikan.</div>'}</section>`;
   if (candidates.length) {
     page.querySelector('.recommendation-table thead tr').insertAdjacentHTML('beforeend', '<th>Aksi</th>');
     const savedActions = state.dashboard.recommendationActions || {};
     page.querySelectorAll('.recommendation-table tbody tr').forEach((row, index) => { const item = candidates[index]; const saved = savedActions[item.factor] || {}; const defaultProgress = progress[index] || progress[0]; const status = saved.status || defaultProgress[0]; const tone = status === 'Selesai' ? 'complete' : status === 'Dalam Proses' ? 'in-progress' : 'not-started'; row.children[3].innerHTML = `<strong>${escapeHTML(saved.owner || owners[item.factor] || 'Operasional')}</strong>${saved.targetDate ? `<small>Target: ${escapeHTML(saved.targetDate)}</small>` : ''}`; row.children[4].innerHTML = `<span class="recommendation-status ${tone}">${escapeHTML(status)}</span>${saved.note ? `<small class="recommendation-note">${escapeHTML(saved.note)}</small>` : ''}`; row.insertAdjacentHTML('beforeend', `<td><button class="recommendation-edit" data-factor="${escapeHTML(item.factor)}">Update</button></td>`); });
+    if (!canManage()) page.querySelectorAll('.recommendation-edit').forEach((button) => button.remove());
     page.querySelectorAll('.recommendation-edit').forEach((button) => {
       button.addEventListener('click', () => {
         const factor = button.dataset.factor;
@@ -342,9 +358,19 @@ function buildShipmentDirectory(page) {
   page.querySelector('.shipment-list').insertAdjacentElement('afterend', pager); showPage(1);
   const host = page.querySelector('.editor-host');
   const openEditor = (item, isNew) => { host.innerHTML = form(item, isNew); const editor = host.querySelector('.shipment-editor'); editor.querySelector('[name="etd"]').value = dateInputValue(item.etd); editor.querySelector('[name="eta"]').value = dateInputValue(item.eta); editor.querySelector('[name="actualArrival"]').value = dateInputValue(item.actualArrival); const eta = editor.querySelector('[name="eta"]'); const actual = editor.querySelector('[name="actualArrival"]'); const status = editor.querySelector('[name="status"]'); const statusNote = document.createElement('small'); statusNote.className = 'status-calculation'; status.parentElement.append(statusNote); const syncStatus = () => { if (!eta.value || !actual.value) { status.disabled = false; statusNote.textContent = 'Isi actual arrival untuk menghitung status otomatis.'; return; } const days = Math.round((new Date(`${actual.value}T00:00:00`) - new Date(`${eta.value}T00:00:00`)) / 86400000); status.value = days >= 1 ? 'Delay' : 'On Time'; status.disabled = true; statusNote.textContent = days >= 1 ? `Status otomatis: Delay (${days} hari setelah ETA).` : 'Status otomatis: On Time (tiba sesuai atau sebelum ETA).'; }; eta.addEventListener('change', syncStatus); actual.addEventListener('change', syncStatus); syncStatus(); const close = () => host.replaceChildren(); editor.querySelector('.close-editor').addEventListener('click', close); host.addEventListener('click', (event) => { if (event.target === host) close(); }); editor.querySelector('form').addEventListener('submit', async (event) => { event.preventDefault(); const target = event.currentTarget; const data = Object.fromEntries(new FormData(target)); if (status.disabled) data.status = status.value; const message = target.querySelector('.form-message'); try { await request(target.dataset.new === 'true' ? '/api/shipments' : `/api/shipments/${target.dataset.id}`, { method: target.dataset.new === 'true' ? 'POST' : 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }); await loadDashboard(); renderApp(); } catch (error) { message.textContent = error.message; } }); };
-  page.querySelector('.add-shipment').addEventListener('click', () => openEditor({}, true));
+  if (!canOperate()) page.querySelector('.add-shipment')?.remove();
+  page.querySelector('.add-shipment')?.addEventListener('click', () => openEditor({}, true));
   page.querySelectorAll('[data-edit]').forEach((button) => { button.insertAdjacentHTML('afterend', `<button class="table-detail" data-detail="${button.dataset.edit}" title="Lihat detail shipment">Detail</button>`); button.addEventListener('click', () => openEditor(shipments.find((item) => item.id === Number(button.dataset.edit)), false)); });
   page.querySelectorAll('[data-detail]').forEach((button) => button.addEventListener('click', () => { state.selectedShipmentId = Number(button.dataset.detail); state.returnToAttention = false; state.returnToDashboard = false; state.returnToShipments = true; state.view = 'detail'; renderApp(); }));
+  if (!canOperate()) page.querySelectorAll('[data-edit]').forEach((button) => button.remove());
+  if (canOperate()) {
+    page.querySelectorAll('[data-edit]').forEach((button) => button.insertAdjacentHTML('afterend', `<button class="table-edit table-delete" data-delete="${button.dataset.edit}" title="Hapus shipment">Hapus</button>`));
+    page.querySelectorAll('[data-delete]').forEach((button) => button.addEventListener('click', () => {
+      const shipment = shipments.find((item) => item.id === Number(button.dataset.delete));
+      if (!shipment || !window.confirm(`Hapus shipment ${shipment.shipmentNo}? Data riwayat proses dan kendala terkait juga akan dihapus.`)) return;
+      request(`/api/shipments/${shipment.id}`, { method: 'DELETE' }).then(loadDashboard).then(renderApp).catch((error) => window.alert(error.message));
+    }));
+  }
   if (state.editShipmentId) { const editItem = shipments.find((item) => item.id === Number(state.editShipmentId)); state.editShipmentId = ''; if (editItem) openEditor(editItem, false); }
   page.querySelector('.shipment-search input').addEventListener('input', (event) => { const query = event.target.value.toLowerCase(); page.querySelectorAll('tbody tr').forEach((row) => { row.hidden = !row.textContent.toLowerCase().includes(query); }); });
   page.querySelector('.route-filter').addEventListener('change', (event) => { page.querySelectorAll('tbody tr').forEach((row) => { row.hidden = event.target.value !== 'Semua rute' && row.dataset.route !== event.target.value; }); });
@@ -391,6 +417,26 @@ function attachAHPEntry(page) {
   modal.addEventListener('click', (event) => { if (event.target === modal) close(); });
   const form = modal.querySelector('form');
   form.addEventListener('submit', async (event) => { event.preventDefault(); const values = Object.fromEntries(new FormData(form)); const ratio = values.consistencyRatio; delete values.consistencyRatio; const message = form.querySelector('.form-message'); try { await request('/api/ahp', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ weights: values, consistencyRatio: ratio }) }); await loadDashboard(); close(); renderApp(); } catch (error) { message.textContent = error.message; } });
+}
+
+function attachAHPEntry(page) {
+  const trigger = page.querySelector('.ahp-edit-button');
+  if (!trigger || !canManage()) return;
+  const modal = document.createElement('div');
+  modal.className = 'shipment-modal ahp-entry-modal'; modal.hidden = true;
+  modal.innerHTML = `<section class="shipment-editor ahp-editor" role="dialog" aria-modal="true"><button class="close-editor" type="button" aria-label="Tutup">×</button><div class="panel-title"><div><p class="eyebrow">HASIL PENELITIAN AHP</p><h2>Edit bobot AHP</h2><p>Masukkan hasil perhitungan final dan sumbernya. Total bobot harus sama dengan 1.</p></div></div><form><div class="weight-grid">${state.dashboard.ahp.map((item) => `<label>${escapeHTML(item.factor)}<input name="${escapeHTML(item.factor)}" type="number" min="0" max="1" step="0.0001" value="${item.weight ?? ''}" required></label>`).join('')}</div><div class="ahp-footer"><label class="full">Sumber hasil AHP<input name="source" maxlength="200" value="${escapeHTML(state.dashboard.ahpMeta?.source || 'Hasil perhitungan AHP penelitian')}" required></label><label>Periode penelitian<input name="period" maxlength="100" value="${escapeHTML(state.dashboard.ahpMeta?.period || '')}"></label><label>Consistency Ratio (CR)<input name="consistencyRatio" type="number" min="0" max="1" step="0.0001" value="${state.dashboard.consistencyRatio ?? ''}" required></label><button class="primary" type="submit">Simpan hasil AHP</button><p class="form-message" role="alert"></p></div></form></section>`;
+  page.appendChild(modal);
+  const close = () => { modal.hidden = true; };
+  trigger.addEventListener('click', () => { modal.hidden = false; modal.querySelector('input')?.focus(); });
+  modal.querySelector('.close-editor').addEventListener('click', close);
+  modal.addEventListener('click', (event) => { if (event.target === modal) close(); });
+  modal.querySelector('form').addEventListener('submit', async (event) => {
+    event.preventDefault(); const values = Object.fromEntries(new FormData(event.currentTarget));
+    const { consistencyRatio, source, period, ...weights } = values;
+    const message = event.currentTarget.querySelector('.form-message');
+    try { await request('/api/ahp', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ weights, consistencyRatio, source, period }) }); await loadDashboard(); close(); renderApp(); }
+    catch (error) { message.textContent = error.message; }
+  });
 }
 
 function addResearchContext(page) {
@@ -516,6 +562,8 @@ function buildAhpTemplate(page) {
   const ratioText = hasRatio ? consistencyRatio.toFixed(3).replace('.', ',') : '—';
 
   page.innerHTML = `<section class="ahp-heading"><div><p class="eyebrow">INS SEATRACK · ANALISIS KEPUTUSAN</p><h1>Prioritas AHP</h1><p>Hasil pembobotan faktor penyebab keterlambatan pengiriman laut.</p></div><div class="ahp-actions"><span class="ahp-state ${hasWeights ? 'ready' : ''}">${hasWeights ? 'Hasil AHP tersedia' : 'Menunggu hasil AHP final'}</span><button class="primary ahp-edit-button" type="button">${hasWeights ? 'Edit bobot AHP' : 'Input hasil penelitian'}</button></div></section><section class="ahp-template-layout"><section class="panel ahp-priority-panel"><div class="ahp-panel-title"><div><h2>Rangking prioritas faktor</h2><p>${hasWeights ? 'Urutan ditampilkan dari bobot tertinggi ke terendah.' : 'Kriteria tersedia; urutan prioritas aktif setelah bobot hasil AHP disimpan.'}</p></div></div><div class="ahp-table-head"><span>Peringkat</span><span>Kriteria</span><span>Bobot</span><span aria-label="Visualisasi bobot"></span></div><div class="ahp-priority-list">${priorities.map((item, index) => { const weight = typeof item.weight === 'number' ? item.weight : null; const width = weight === null ? 0 : weight / maximum * 100; return `<div class="ahp-priority-row"><span class="ahp-rank">${hasWeights ? index + 1 : '—'}</span><strong>${escapeHTML(item.factor)}</strong><b>${weight === null ? '—' : weight.toFixed(3).replace('.', ',')}</b><i class="ahp-weight-track"><em style="width:${width}%"></em></i></div>`; }).join('')}</div></section><aside class="panel consistency-panel"><p class="eyebrow">VALIDASI AHP</p><h2>Uji Konsistensi</h2><div class="consistency-values"><div><span>CI</span><b>0,072</b></div><div><span>CR</span><b>${ratioText}</b></div></div><p class="consistency-note">Hasil perhitungan konsistensi dari pengolahan AHP pada penelitian.</p><div class="consistency-result ${hasRatio ? (isConsistent ? 'consistent' : 'review') : 'waiting'}"><strong>${!hasRatio ? 'Menunggu hasil AHP' : (isConsistent ? 'Konsisten' : 'Perlu ditinjau')}</strong><span>${!hasRatio ? 'Masukkan CR final untuk validasi.' : (isConsistent ? 'CR ≤ 0,10' : 'CR > 0,10')}</span></div></aside></section>`;
+  if (!canManage()) page.querySelector('.ahp-edit-button')?.remove();
+  if (state.dashboard.ahpMeta?.source) page.querySelector('.ahp-heading > div')?.insertAdjacentHTML('beforeend', `<small class="ahp-source">Sumber: ${escapeHTML(state.dashboard.ahpMeta.source)}${state.dashboard.ahpMeta.period ? ` · ${escapeHTML(state.dashboard.ahpMeta.period)}` : ''}</small>`);
 }
 
 function manual() {
@@ -541,6 +589,8 @@ function renderApp() {
   if (!state.user) { app.appendChild(createLogin()); return; }
   const pages = { overview, shipments, attention, detail, delays, analysis, ahp, recommendations, reports, manual, settings };
   if (!pages[state.view]) state.view = 'overview';
+  const access = { delays: canOperate(), analysis: canManage(), ahp: canManage(), recommendations: canManage(), reports: canManage() };
+  if (access[state.view] === false) state.view = 'overview';
   localStorage.setItem('ins-seatrack-view', state.view);
   try {
     const shell = createShell();

@@ -10,6 +10,7 @@ import time
 import zipfile
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
+from functools import wraps
 from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree as ET
@@ -57,6 +58,7 @@ AHP_TEMPLATE_WEIGHTS = {
     "Kondisi Cuaca dan Lingkungan": 0.035,
 }
 AHP_TEMPLATE_RATIO = 0.081
+ROLE_ALIASES = {"sales": "operasional", "operasional": "operasional", "manager": "manager", "admin": "admin"}
 
 # Static files are served explicitly by frontend() below. Disabling Flask's
 # implicit root static route prevents it from intercepting SPA URLs such as
@@ -83,15 +85,25 @@ def ensure_data() -> None:
         write_json(USERS_FILE, {"users": [
             {"id": 1, "name": "Admin Operasional", "email": "admin@freight.id", "password": "admin123", "role": "admin"},
             {"id": 2, "name": "Varin Ferninda", "email": "varin@freight.id", "password": "sales123", "role": "operasional"},
+            {"id": 3, "name": "Budi Manager", "email": "budi@freight.id", "password": "manager123", "role": "manager"},
         ]})
+    else:
+        users = read_json(USERS_FILE)
+        if not any(item.get("role") == "manager" for item in users.get("users", [])):
+            users.setdefault("users", []).append({"id": 3, "name": "Budi Manager", "email": "budi@freight.id", "password": "manager123", "role": "manager"})
+            write_json(USERS_FILE, users)
     if not DASHBOARD_FILE.exists():
-        write_json(DASHBOARD_FILE, {"delays": [], "shipmentUpdates": {}, "shipmentProcesses": {}, "recommendationActions": {}, "ahp": {"consistencyRatio": AHP_TEMPLATE_RATIO, "weights": AHP_TEMPLATE_WEIGHTS}})
+        write_json(DASHBOARD_FILE, {"delays": [], "shipmentUpdates": {}, "deletedShipmentIds": [], "shipmentProcesses": {}, "recommendationActions": {}, "auditLog": [], "ahp": {"consistencyRatio": AHP_TEMPLATE_RATIO, "weights": AHP_TEMPLATE_WEIGHTS, "source": "Hasil perhitungan AHP penelitian", "period": "Penelitian TA"}})
     else:
         dashboard = read_json(DASHBOARD_FILE)
         changed = False
-        for key, value in {"delays": [], "shipmentUpdates": {}, "manualShipments": [], "shipmentProcesses": {}, "recommendationActions": {}, "ahp": {"consistencyRatio": None, "weights": {}}}.items():
+        for key, value in {"delays": [], "shipmentUpdates": {}, "manualShipments": [], "deletedShipmentIds": [], "shipmentProcesses": {}, "recommendationActions": {}, "auditLog": [], "ahp": {"consistencyRatio": None, "weights": {}, "source": "", "period": ""}}.items():
             if key not in dashboard:
                 dashboard[key], changed = value, True
+        ahp = dashboard.get("ahp", {})
+        for key, value in {"source": "Hasil perhitungan AHP penelitian", "period": "Penelitian TA"}.items():
+            if key not in ahp:
+                ahp[key], changed = value, True
         if changed:
             write_json(DASHBOARD_FILE, dashboard)
     if not SESSIONS_FILE.exists():
@@ -163,6 +175,8 @@ def model() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     shipments = parse_shipments()
     database = read_json(DASHBOARD_FILE)
     shipments.extend(database.get("manualShipments", []))
+    deleted_ids = {int(item) for item in database.get("deletedShipmentIds", [])}
+    shipments = [shipment for shipment in shipments if shipment["id"] not in deleted_ids]
     delays = database.get("delays", [])
     updates = database.get("shipmentUpdates", {})
     by_shipment = {item["shipmentId"]: item for item in delays}
@@ -216,6 +230,36 @@ def authenticated() -> bool:
         return False
     request.session_token = token  # type: ignore[attr-defined]
     return True
+
+
+def current_user() -> dict[str, Any] | None:
+    token = getattr(request, "session_token", "")
+    session = SESSIONS.get(token) or read_json(SESSIONS_FILE).get("sessions", {}).get(token, {})
+    user_id = session.get("userId")
+    return next((item for item in read_json(USERS_FILE).get("users", []) if item.get("id") == user_id), None)
+
+
+def normalized_role(user: dict[str, Any] | None) -> str:
+    return ROLE_ALIASES.get(str((user or {}).get("role", "")), "")
+
+
+def require_roles(*roles: str):
+    def decorator(handler):
+        @wraps(handler)
+        def wrapped(*args, **kwargs):
+            user = current_user()
+            if not user:
+                return jsonify(message="Silakan login kembali"), 401
+            if normalized_role(user) not in roles:
+                return jsonify(message="Anda tidak memiliki hak akses untuk tindakan ini"), 403
+            return handler(*args, **kwargs)
+        return wrapped
+    return decorator
+
+
+def audit(database: dict[str, Any], action: str, shipment_id: int | None = None, detail: str = "") -> None:
+    user = current_user() or {}
+    database.setdefault("auditLog", []).insert(0, {"action": action, "shipmentId": shipment_id, "detail": detail, "at": datetime.now(timezone.utc).isoformat(), "userId": user.get("id"), "role": normalized_role(user)})
 
 
 @app.before_request
@@ -310,7 +354,7 @@ def dashboard():
         routes=ordered(lambda item: f"{item['origin']} → {item['destination']}"), carriers=ordered(lambda item: item["carrier"]),
         shipments=shipments, delays=delays, delayFactors=DELAY_FACTORS, processStages=PROCESS_STAGES, shipmentProcesses=shipment_processes, recommendationActions=read_json(DASHBOARD_FILE).get("recommendationActions", {}), presentationMode=presentation_mode,
         ahp=[{"rank": index + 1, "factor": factor, "weight": ahp_data.get("weights", {}).get(factor), "status": "Hasil AHP tersimpan" if ahp_data.get("weights", {}).get(factor) is not None else "Menunggu hasil AHP final"} for index, factor in enumerate(DELAY_FACTORS)],
-        consistencyRatio=ahp_data.get("consistencyRatio"),
+        consistencyRatio=ahp_data.get("consistencyRatio"), ahpMeta={"source": ahp_data.get("source", ""), "period": ahp_data.get("period", ""), "updatedAt": ahp_data.get("updatedAt", "")},
     )
 
 
@@ -339,6 +383,7 @@ def validate_shipment_changes(payload: dict[str, Any], creating: bool = False) -
 
 
 @app.post("/api/shipments")
+@require_roles("admin", "operasional")
 def add_shipment():
     payload = request.get_json(silent=True) or {}
     try:
@@ -351,11 +396,13 @@ def add_shipment():
     shipment = {"id": shipment_id, "invoiceNo": "-", "pod": "-", "containerType": "-", "containers": 0, "weight": 0, "ajuNo": "-", "documentDate": "-", "ppftzNo": "-", "remarks": "", "actualArrival": None, "status": "Belum dievaluasi", "carrier": "-", "vesselVoyage": "-", "consignee": "-"}
     shipment.update(changes)
     database.setdefault("manualShipments", []).append(shipment)
+    audit(database, "shipment_created", shipment_id, shipment["shipmentNo"])
     write_json(DASHBOARD_FILE, database)
     return jsonify(shipment), 201
 
 
 @app.put("/api/shipments/<int:shipment_id>")
+@require_roles("admin", "operasional")
 def edit_shipment(shipment_id):
     payload = request.get_json(silent=True) or {}
     shipment = next((item for item in model()[0] if item["id"] == shipment_id), None)
@@ -373,8 +420,27 @@ def edit_shipment(shipment_id):
     database.setdefault("shipmentUpdates", {}).setdefault(str(shipment_id), {}).update(changes)
     if changes.get("status") == "On Time":
         database["delays"] = [item for item in database.get("delays", []) if item["shipmentId"] != shipment_id]
+    audit(database, "shipment_updated", shipment_id, shipment.get("shipmentNo", ""))
     write_json(DASHBOARD_FILE, database)
     return jsonify({**shipment, **changes})
+
+
+@app.delete("/api/shipments/<int:shipment_id>")
+@require_roles("admin", "operasional")
+def delete_shipment(shipment_id):
+    shipment = next((item for item in model()[0] if item["id"] == shipment_id), None)
+    if not shipment:
+        return jsonify(message="Shipment tidak ditemukan"), 404
+    database = read_json(DASHBOARD_FILE)
+    database.setdefault("deletedShipmentIds", []).append(shipment_id)
+    database["deletedShipmentIds"] = sorted(set(database["deletedShipmentIds"]))
+    database.get("shipmentUpdates", {}).pop(str(shipment_id), None)
+    database.get("shipmentProcesses", {}).pop(str(shipment_id), None)
+    database["delays"] = [item for item in database.get("delays", []) if item.get("shipmentId") != shipment_id]
+    database["manualShipments"] = [item for item in database.get("manualShipments", []) if item.get("id") != shipment_id]
+    audit(database, "shipment_deleted", shipment_id, shipment.get("shipmentNo", ""))
+    write_json(DASHBOARD_FILE, database)
+    return "", 204
 
 
 @app.get("/api/delays")
@@ -382,6 +448,7 @@ def delays(): return jsonify(model()[1])
 
 
 @app.put("/api/recommendations/<path:factor>")
+@require_roles("admin", "manager")
 def update_recommendation(factor):
     if factor not in DELAY_FACTORS:
         return jsonify(message="Kriteria rekomendasi tidak valid"), 404
@@ -401,11 +468,13 @@ def update_recommendation(factor):
     database = read_json(DASHBOARD_FILE)
     action = {"status": status, "owner": owner, "targetDate": target_date, "completedDate": completed_date, "note": note, "updatedAt": datetime.now(timezone.utc).isoformat(), "updatedBy": (SESSIONS.get(request.session_token) or {}).get("userId")}  # type: ignore[attr-defined]
     database.setdefault("recommendationActions", {})[factor] = action
+    audit(database, "recommendation_updated", detail=factor)
     write_json(DASHBOARD_FILE, database)
     return jsonify(action)
 
 
 @app.post("/api/shipments/<int:shipment_id>/process")
+@require_roles("admin", "operasional")
 def add_shipment_process(shipment_id):
     shipment = next((item for item in model()[0] if item["id"] == shipment_id), None)
     if not shipment:
@@ -438,6 +507,7 @@ def add_shipment_process(shipment_id):
         document["fileName"] = name
         document["filePath"] = stored_name
     history.append({"status": status, "note": note, "timestamp": datetime.now(timezone.utc).isoformat(), "userId": (SESSIONS.get(request.session_token) or {}).get("userId"), "document": document})  # type: ignore[attr-defined]
+    audit(database, "shipment_process_updated", shipment_id, PROCESS_LABELS[status])
     write_json(DASHBOARD_FILE, database)
     return jsonify(history=history, currentStatus=status)
 
@@ -455,6 +525,7 @@ def process_document(shipment_id, event_index):
 
 
 @app.put("/api/shipments/<int:shipment_id>/status")
+@require_roles("admin", "operasional")
 def update_shipment_status(shipment_id):
     payload = request.get_json(silent=True) or {}
     source_shipment = next((item for item in model()[0] if item["id"] == shipment_id), None)
@@ -482,15 +553,19 @@ def update_shipment_status(shipment_id):
     update.update({"status": status, "actualArrival": actual_arrival or None, "statusNote": note.strip(), "delayDays": delay_days})
     if status == "On Time":
         database["delays"] = [item for item in database.get("delays", []) if item["shipmentId"] != shipment_id]
+    audit(database, "shipment_status_updated", shipment_id, status)
     write_json(DASHBOARD_FILE, database)
     return jsonify(update)
 
 
 @app.put("/api/ahp")
+@require_roles("admin", "manager")
 def update_ahp():
     payload = request.get_json(silent=True) or {}
     weights = payload.get("weights")
     ratio = payload.get("consistencyRatio")
+    source = str(payload.get("source", "")).strip()
+    period = str(payload.get("period", "")).strip()
     if not isinstance(weights, dict) or set(weights) != set(DELAY_FACTORS):
         return jsonify(message="Bobot untuk sembilan faktor wajib diisi"), 400
     try:
@@ -502,13 +577,17 @@ def update_ahp():
         return jsonify(message="Bobot dan Consistency Ratio harus berada pada rentang 0 sampai 1"), 400
     if abs(sum(normalized.values()) - 1) > 0.02:
         return jsonify(message="Total bobot AHP harus bernilai 1"), 400
+    if not source or len(source) > 200 or len(period) > 100:
+        return jsonify(message="Sumber hasil AHP wajib diisi dan periode maksimal 100 karakter"), 400
     database = read_json(DASHBOARD_FILE)
-    database["ahp"] = {"consistencyRatio": ratio, "weights": normalized}
+    database["ahp"] = {"consistencyRatio": ratio, "weights": normalized, "source": source, "period": period, "updatedAt": datetime.now(timezone.utc).isoformat()}
+    audit(database, "ahp_updated", detail=source)
     write_json(DASHBOARD_FILE, database)
     return jsonify(database["ahp"])
 
 
 @app.post("/api/delays")
+@require_roles("admin", "operasional")
 def add_delay():
     payload = request.get_json(silent=True) or {}
     try:
@@ -532,6 +611,7 @@ def add_delay():
     database = read_json(DASHBOARD_FILE)
     database["delays"] = [item for item in database.get("delays", []) if item["shipmentId"] != shipment_id]
     database["delays"].insert(0, delay)
+    audit(database, "delay_recorded", shipment_id, delay["factor"])
     write_json(DASHBOARD_FILE, database)
     return jsonify(delay), 201
 

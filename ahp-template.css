@@ -8,6 +8,7 @@
 
 .ahp-heading h1 { margin: 5px 0 4px; font-size: clamp(30px, 3vw, 42px); color: #123b54; }
 .ahp-heading p:not(.eyebrow) { margin: 0; color: #718a9a; }
+.ahp-source { display: block; margin-top: 9px; color: #718a9a; font-size: 12px; }
 .ahp-actions { display: flex; align-items: center; gap: 10px; }
 .ahp-actions .primary { min-height: 40px; padding: 0 16px; font-size: 13px; white-space: nowrap; }
 .ahp-state { padding: 9px 13px; border-radius: 999px; background: #f0f4f5; color: #6b8290; font-size: 13px; font-weight: 750; white-space: nowrap; }

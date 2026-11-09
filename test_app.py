@@ -9,8 +9,8 @@ class DashboardTest(unittest.TestCase):
         app.ensure_data()
         cls.client = app.app.test_client()
 
-    def login_headers(self):
-        response = self.client.post("/api/login", json={"email": "varin@freight.id", "password": "sales123"})
+    def login_headers(self, email="varin@freight.id", password="sales123"):
+        response = self.client.post("/api/login", json={"email": email, "password": password})
         self.assertEqual(response.status_code, 200)
         return {"Authorization": f"Bearer {response.get_json()['token']}"}
 
@@ -42,14 +42,16 @@ class DashboardTest(unittest.TestCase):
         headers = self.login_headers()
         status = self.client.put("/api/shipments/1/status", headers=headers, json={"status": "Invalid"})
         self.assertEqual(status.status_code, 400)
-        ahp = self.client.put("/api/ahp", headers=headers, json={})
+        ahp = self.client.put("/api/ahp", headers=self.login_headers("budi@freight.id", "manager123"), json={})
         self.assertEqual(ahp.status_code, 400)
         password = self.client.put("/api/account/password", headers=headers, json={"currentPassword": "salah", "newPassword": "passwordbaru"})
         self.assertEqual(password.status_code, 400)
         process = self.client.post("/api/shipments/1/process", headers=headers, json={"status": "DELIVERED", "note": "Tidak berurutan"})
         self.assertEqual(process.status_code, 400)
-        recommendation = self.client.put("/api/recommendations/Dokumen%20Kepabeanan", headers=headers, json={"status": "Invalid", "owner": "Operasional"})
+        recommendation = self.client.put("/api/recommendations/Dokumen%20Kepabeanan", headers=self.login_headers("budi@freight.id", "manager123"), json={"status": "Invalid", "owner": "Operasional"})
         self.assertEqual(recommendation.status_code, 400)
+        forbidden_ahp = self.client.put("/api/ahp", headers=headers, json={})
+        self.assertEqual(forbidden_ahp.status_code, 403)
 
 
 if __name__ == "__main__":
