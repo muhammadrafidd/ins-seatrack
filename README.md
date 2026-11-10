@@ -34,6 +34,17 @@ Data Excel yang tersedia menghasilkan 140 shipment valid: 114 LCL dan 26 FCL. Da
 - `public/styles.css`, `theme.css`, `voyage.css`, `harbor.css`: tema antarmuka
 - `requirements.txt`: dependensi Python
 
+## Dokumen HKI
+
+Dokumen pendukung pengajuan HKI tersedia pada folder `docs/`:
+
+- `docs/FLOWCHART.md`: diagram alur sistem dan proses shipment.
+- `docs/MANUAL_BOOK.md`: panduan penggunaan aplikasi.
+- `docs/VERSION.md`: informasi versi aplikasi.
+- `docs/CHANGELOG.md`: riwayat perubahan aplikasi.
+- `docs/SCREENSHOT_CHECKLIST.md`: daftar screenshot dokumentasi yang perlu dikumpulkan.
+- `docs/HKI_PACKAGE_README.md`: indeks serta checklist paket pengumpulan HKI.
+
 ## Deploy ke Railway
 
 Konfigurasi deploy sudah tersedia melalui `railway.toml`. Railway menjalankan aplikasi dengan Gunicorn dan mengecek kesehatan aplikasi di `/api/health`.
