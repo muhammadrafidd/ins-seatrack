@@ -1,7 +1,7 @@
 const app = document.getElementById('app');
 const state = { user: null, token: null, dashboard: null, view: 'overview', selectedShipmentId: '', attentionType: '', editShipmentId: '', returnToAttention: false, returnToDashboard: false, returnToShipments: false, presentationMode: false };
 const dashboardFilters = { route: 'Semua rute', status: 'Semua status' };
-const analysisFilters = { route: 'Semua rute', stage: 'Semua tahapan' };
+const analysisFilters = { route: 'Semua rute', stage: 'Semua tahapan', timeUnit: 'Bulanan', year: 'Semua tahun' };
 const shipmentProcessLabels = { DRAFT: 'Persiapan dokumen', BOOKED: 'Booking / Pickup', EXPORT_CLEARED: 'Dokumen ekspor selesai', IN_TRANSIT: 'Dalam pelayaran', ARRIVED: 'Tiba di tujuan', CUSTOMS: 'Proses customs', OUT_FOR_DELIVERY: 'Pengantaran lokal', DELIVERED: 'Delivered / POD' };
 const shipmentProcessFlow = (type) => type === 'OI' ? ['DRAFT', 'BOOKED', 'IN_TRANSIT', 'CUSTOMS', 'OUT_FOR_DELIVERY', 'DELIVERED'] : ['DRAFT', 'BOOKED', 'EXPORT_CLEARED', 'IN_TRANSIT', 'ARRIVED', 'DELIVERED'];
 const roleKey = () => state.user?.role === 'sales' ? 'operasional' : state.user?.role;
@@ -86,28 +86,28 @@ function navIcon(view) {
 }
 function createShell() {
   const root = document.createElement('div'); root.className = 'shell';
-  root.innerHTML = `<aside class="sidebar"><a class="brand logo-on-dark" href="#overview"><img src="ins-logo.svg" alt="INS Corporation"><small>SHIPMENT INTELLIGENCE</small></a><p class="nav-label">MENU UTAMA</p><nav><button data-view="overview">${navIcon('▦')} Overview</button><button data-view="shipments">${navIcon('≡')} Data shipment</button><button data-view="delays">${navIcon('!')} Input kendala</button><button data-view="ahp">${navIcon('◈')} Prioritas AHP</button><button data-view="reports">${navIcon('↗')} Laporan</button></nav><div class="data-source"><span class="eyebrow">SUMBER DATA</span><strong>Inbound &amp; Outbound</strong><small>140 shipment valid · Excel</small></div></aside><div class="content"><header><div class="profile"><span class="avatar">${escapeHTML(state.user.name[0])}</span><span><strong>${escapeHTML(state.user.name)}</strong><small>${escapeHTML(state.user.role)}</small></span><button class="logout" title="Keluar" aria-label="Keluar">↪</button></div></header><main class="workspace"></main></div>`;
+  root.innerHTML = `<aside class="sidebar"><a class="brand logo-on-dark" href="#overview"><img src="ins-logo.svg" alt="INS Corporation"><small>SHIPMENT INTELLIGENCE</small></a><p class="nav-label">NAVIGASI</p><nav></nav><div class="data-source"><span class="eyebrow">SUMBER DATA</span><strong>Inbound &amp; Outbound</strong><small>140 shipment valid · Excel</small></div></aside><div class="content"><header><div class="profile"><span class="avatar">${escapeHTML(state.user.name[0])}</span><span><strong>${escapeHTML(state.user.name)}</strong><small>${escapeHTML(state.user.role)}</small></span><button class="logout" title="Keluar" aria-label="Keluar">↪</button></div></header><main class="workspace"></main></div>`;
   root.querySelectorAll('.logo-on-dark').forEach((brand) => { brand.innerHTML = '<span class="company-lockup"><i>PT.</i><span><b>INTISARANA</b><strong>PERSADA</strong></span></span><small>FREIGHT FORWARDING · OPERATIONS</small>'; });
-  const navigation = { overview: ['▦', '1. Dashboard'], shipments: ['≡', '2. Data shipment'], delays: ['!', '3. Catat kendala'], ahp: ['◈', '4. Analisis AHP'], reports: ['↗', '5. Laporan'] };
   const sidebarFooter = root.querySelector('.data-source');
   sidebarFooter.classList.add('sidebar-footer');
   sidebarFooter.innerHTML = '<strong>INS SeaTrack</strong><span>Shipment Intelligence</span><small>© 2026 PT Intisarana Persada</small>';
   const nav = root.querySelector('nav');
-  nav.querySelector('[data-view="reports"]').insertAdjacentHTML('afterend', `<button data-view="manual">${navIcon('manual')} Panduan penggunaan</button>`);
-  nav.querySelector('[data-view="delays"]').insertAdjacentHTML('afterend', `<button data-view="analysis">${navIcon('≋')} Analisis kendala</button>`);
-  nav.querySelector('[data-view="ahp"]').insertAdjacentHTML('afterend', `<button data-view="recommendations">${navIcon('✓')} Rekomendasi perbaikan</button>`);
-  Object.assign(navigation, { overview: ['▦', '1. Dashboard'], shipments: ['≡', '2. Data shipment'], delays: ['!', '3. Input kendala'], analysis: ['≋', '4. Analisis kendala'], ahp: ['◈', '5. Prioritas AHP'], recommendations: ['✓', '6. Rekomendasi perbaikan'], reports: ['↗', '7. Laporan'] });
-  navigation.manual = ['8. Panduan penggunaan'];
-  root.querySelectorAll('[data-view]').forEach((button) => { const label = navigation[button.dataset.view]?.[1] || button.textContent || 'Halaman'; button.innerHTML = navIcon(button.dataset.view) + String(label).replace(/^\d+\.\s*/, ''); button.addEventListener('click', () => { state.view = button.dataset.view; renderApp(); }); });
-  const menuNames = { overview: 'Dashboard', shipments: 'Data shipment', delays: 'Catat kendala', analysis: 'Analisis kendala', ahp: 'Prioritas AHP', recommendations: 'Rekomendasi perbaikan', reports: 'Laporan', manual: 'Panduan penggunaan' };
-  root.querySelectorAll('[data-view]').forEach((button) => { button.innerHTML = navIcon(button.dataset.view) + menuNames[button.dataset.view]; });
-  root.querySelector('.nav-label').textContent = 'NAVIGASI';
-  nav.querySelector('[data-view="shipments"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">OPERASIONAL</p>');
-  nav.querySelector('[data-view="analysis"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">ANALISIS</p>');
-  nav.querySelector('[data-view="reports"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">RINGKASAN</p>');
-  nav.querySelector('[data-view="manual"]').insertAdjacentHTML('beforebegin', '<p class="nav-group">BANTUAN</p>');
-  if (!canOperate()) nav.querySelector('[data-view="delays"]')?.remove();
-  if (!canManage()) ['analysis', 'ahp', 'recommendations', 'reports'].forEach((view) => nav.querySelector(`[data-view="${view}"]`)?.remove());
+  const menuNames = { overview: 'Dashboard', shipments: 'Data shipment', delays: 'Catat kendala', analysis: 'Analisis', ahp: 'Prioritas AHP', recommendations: 'Rekomendasi perbaikan', reports: 'Laporan', manual: 'Panduan penggunaan' };
+  const groups = [
+    { label: '', views: ['overview'] },
+    { label: 'OPERASIONAL', views: ['shipments', 'delays'] },
+    { label: 'ANALISIS', views: ['analysis', 'ahp', 'recommendations'] },
+    { label: 'RINGKASAN', views: ['reports'] },
+    { label: 'BANTUAN', views: ['manual'] }
+  ];
+  const isAllowed = (view) => !(['delays'].includes(view) && !canOperate()) && !(['analysis', 'ahp', 'recommendations', 'reports'].includes(view) && !canManage());
+  nav.innerHTML = groups.map(({ label, views }) => {
+    const allowedViews = views.filter(isAllowed);
+    if (!allowedViews.length) return '';
+    const heading = label ? `<p class="nav-group">${label}</p>` : '';
+    return heading + allowedViews.map((view) => `<button type="button" data-view="${view}">${navIcon(view)}${menuNames[view]}</button>`).join('');
+  }).join('');
+  root.querySelectorAll('[data-view]').forEach((button) => button.addEventListener('click', () => { state.view = button.dataset.view; renderApp(); }));
   root.querySelector(`[data-view="${state.view}"]`)?.classList.add('active');
   const profile = root.querySelector('.profile');
   const profileAccount = document.createElement('button');
@@ -118,7 +118,7 @@ function createShell() {
   root.querySelector('.logout').addEventListener('click', async () => { await request('/api/logout', { method: 'POST' }); localStorage.removeItem('ins-seatrack-session'); localStorage.removeItem('ins-seatrack-view'); state.user = null; state.token = null; state.dashboard = null; renderApp(); });
   return root;
 }
-function viewTitle() { return ({ overview: 'Dashboard overview', shipments: 'Data shipment', attention: 'Perlu tindakan', detail: 'Detail shipment', delays: 'Input kendala', analysis: 'Analisis kendala', ahp: 'Analisis prioritas AHP', recommendations: 'Rekomendasi perbaikan', reports: 'Laporan operasional', manual: 'Panduan penggunaan', settings: 'Pengaturan' })[state.view]; }
+function viewTitle() { return ({ overview: 'Dashboard overview', shipments: 'Data shipment', attention: 'Perlu tindakan', detail: 'Detail shipment', delays: 'Input kendala', analysis: 'Analisis', ahp: 'Analisis prioritas AHP', recommendations: 'Rekomendasi perbaikan', reports: 'Laporan operasional', manual: 'Panduan penggunaan', settings: 'Pengaturan' })[state.view]; }
 function createKpi(label, value, note, tone) { return `<article class="kpi ${tone || ''}"><p>${label}</p><strong>${value}</strong><span>${note}</span></article>`; }
 function barList(title, subtitle, list) {
   const maximum = Math.max(...list.map((item) => item.value), 1);
@@ -167,6 +167,7 @@ function attention() {
   page.querySelector('input').addEventListener('input', (event) => { searchQuery = event.target.value.toLowerCase(); currentPage = 1; renderRows(); });
   if (rows.length) renderRows(); else pager.remove();
   page.querySelectorAll('[data-detail]').forEach((button) => button.addEventListener('click', () => { state.selectedShipmentId = Number(button.dataset.detail); state.returnToAttention = true; state.returnToDashboard = false; state.returnToShipments = false; state.view = 'detail'; renderApp(); }));
+  if (!canOperate()) page.querySelectorAll('[data-edit]').forEach((button) => button.remove());
   page.querySelectorAll('[data-edit]').forEach((button) => button.addEventListener('click', () => {
     const shipment = items.find((item) => item.id === Number(button.dataset.edit));
     if (!shipment) return;
@@ -483,6 +484,8 @@ function syncWorkflow(page) {
   flow.querySelector('h2').textContent = 'Alur kerja operasional hingga keputusan manajerial.';
   flow.querySelector('p:not(.eyebrow)').textContent = 'Mulai dari data shipment yang tervalidasi, bukan dari asumsi status atau ranking prioritas.';
   flow.querySelector('.flow-steps').innerHTML = '<button class="flow-step" data-flow-view="shipments"><b>01. Validasi shipment</b><span>ETA dan actual arrival</span></button><button class="flow-step" data-flow-view="detail"><b>02. Verifikasi status</b><span>On time atau delay</span></button><button class="flow-step" data-flow-view="delays"><b>03. Catat kendala</b><span>Faktor dan tindakan awal</span></button><button class="flow-step" data-flow-view="analysis"><b>04. Analisis pola</b><span>Frekuensi dan tahap proses</span></button><button class="flow-step" data-flow-view="ahp"><b>05. AHP periodik</b><span>Kuesioner dan CR</span></button><button class="flow-step" data-flow-view="recommendations"><b>06. Tindak lanjut</b><span>PIC dan rekomendasi</span></button><button class="flow-step" data-flow-view="reports"><b>07. Laporan manager</b><span>Evaluasi dan keputusan</span></button>';
+  flow.querySelectorAll('[data-flow-view="delays"]').forEach((button) => { if (!canOperate()) button.remove(); });
+  flow.querySelectorAll('[data-flow-view="analysis"], [data-flow-view="ahp"], [data-flow-view="recommendations"], [data-flow-view="reports"]').forEach((button) => { if (!canManage()) button.remove(); });
   flow.querySelector('.flow-note').innerHTML = '<strong>Batas delay penelitian:</strong> actual arrival melewati ETA atau jadwal booking sedikitnya satu hari kalender. AHP dilakukan periodik setelah kuesioner responden diolah.';
   flow.querySelectorAll('[data-flow-view]').forEach((button) => button.addEventListener('click', () => { state.view = button.dataset.flowView; renderApp(); }));
 }
@@ -523,6 +526,7 @@ function buildCleanDashboard(page) {
   const workPanels = document.createElement('section'); workPanels.className = 'dashboard-work-panels';
   workPanels.innerHTML = `<section class="panel action-needed"><div class="panel-title"><div><p class="eyebrow">FOKUS HARI INI</p><h2>Perlu tindakan</h2><p>Prioritas yang perlu ditinjau oleh tim operasional.</p></div></div><div class="action-list"><button type="button" class="action-row" data-action="delay"><i class="danger">!</i><span><strong>Shipment terlambat aktif</strong><small>${activeDelays.length ? `${activeDelays[0].shipmentNo} dan ${activeDelays.length - 1} shipment lainnya` : 'Tidak ada shipment delay yang masih aktif'}</small></span><b>${activeDelays.length}</b><em>›</em></button><button type="button" class="action-row" data-action="evaluation"><i class="warning">?</i><span><strong>Shipment perlu evaluasi</strong><small>Actual arrival atau evaluasi status belum lengkap</small></span><b>${evaluationNeeded.length}</b><em>›</em></button><button type="button" class="action-row" data-action="recommendation"><i class="info">✓</i><span><strong>Tindak lanjut prioritas</strong><small>Rekomendasi AHP yang belum selesai</small></span><b>${openRecommendations}</b><em>›</em></button></div></section><section class="panel recent-activity"><div class="panel-title"><div><p class="eyebrow">PEMBARUAN OPERASIONAL</p><h2>Aktivitas terbaru</h2><p>Riwayat perubahan proses shipment terakhir.</p></div></div><div class="activity-list">${activity.length ? activity.map((entry) => `<button type="button" data-shipment="${entry.shipment?.id || ''}" class="activity-row"><i>●</i><span><strong>${escapeHTML(entry.shipment?.shipmentNo || 'Shipment')}</strong><small>${escapeHTML(shipmentProcessLabels[entry.status] || entry.status)}${entry.note ? ` · ${escapeHTML(entry.note)}` : ''}</small></span><time>${new Date(entry.timestamp).toLocaleDateString('id-ID', { day: '2-digit', month: 'short' })}</time></button>`).join('') : '<p class="empty dashboard-empty">Belum ada pembaruan proses shipment.</p>'}</div></section>`;
   processChart.insertAdjacentElement('afterend', workPanels);
+  if (!canManage()) workPanels.querySelector('[data-action="recommendation"]')?.remove();
   workPanels.querySelectorAll('[data-action]').forEach((button) => button.addEventListener('click', () => {
     const action = button.dataset.action;
     if (action === 'recommendation') state.view = 'recommendations';
@@ -540,13 +544,49 @@ function buildAnalysisTemplate(page) {
   const { delays: allDelays, delayFactors, shipments, processStages } = state.dashboard;
   const routes = [...new Set(shipments.map((item) => `${item.origin} → ${item.destination}`))].sort();
   const lookup = new Map(shipments.map((item) => [item.id, item]));
-  const delays = allDelays.filter((item) => { const shipment = lookup.get(item.shipmentId); const route = shipment ? `${shipment.origin} → ${shipment.destination}` : ''; return (analysisFilters.route === 'Semua rute' || route === analysisFilters.route) && (analysisFilters.stage === 'Semua tahapan' || item.processStage === analysisFilters.stage); });
+  const parseDate = (value) => {
+    const raw = String(value || '').trim();
+    if (!raw) return null;
+    const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    const local = raw.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+    const date = iso ? new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3])) : local ? new Date(Number(local[3]), Number(local[2]) - 1, Number(local[1])) : null;
+    return date && !Number.isNaN(date.getTime()) ? date : null;
+  };
+  const availableYears = [...new Set(shipments.map((shipment) => parseDate(shipment.etd)?.getFullYear()).filter(Boolean))].sort((a, b) => b - a);
+  if (analysisFilters.year !== 'Semua tahun' && !availableYears.includes(Number(analysisFilters.year))) analysisFilters.year = 'Semua tahun';
+  const matchesRoute = (shipment) => analysisFilters.route === 'Semua rute' || `${shipment.origin} → ${shipment.destination}` === analysisFilters.route;
+  const selectedShipments = shipments.filter((shipment) => {
+    const etd = parseDate(shipment.etd);
+    return matchesRoute(shipment) && (analysisFilters.year === 'Semua tahun' || etd?.getFullYear() === Number(analysisFilters.year));
+  });
+  const selectedIds = new Set(selectedShipments.map((shipment) => shipment.id));
+  const delays = allDelays.filter((item) => selectedIds.has(item.shipmentId) && (analysisFilters.stage === 'Semua tahapan' || item.processStage === analysisFilters.stage));
   const factors = delayFactors.map((label) => ({ label, value: delays.filter((item) => item.factor === label).length })).filter((item) => item.value);
   const stages = processStages.map((label) => ({ label, value: delays.filter((item) => item.processStage === label).length })).filter((item) => item.value);
   const max = Math.max(...factors.map((item) => item.value), 1); const colors = ['#1c68ab','#7fc7b1','#f3bd57','#69a9d5','#9c89c8','#83bc8b']; let current = 0;
   const slices = stages.map((item,index) => { const start=current; current += delays.length ? item.value / delays.length * 100 : 0; return `${colors[index % colors.length]} ${start}% ${current}%`; }).join(', ') || '#e8eff2 0 100%';
-  page.innerHTML = `<section class="analysis-heading"><div><p class="eyebrow">INS SEATRACK</p><h1>Analisis Kendala</h1><p>Analisis frekuensi dan pola keterlambatan pengiriman laut.</p></div><span>${delays.length} kendala</span></section><section class="analysis-filter"><label>Periode<select><option>Seluruh periode</option></select></label><label>Rute<select name="route"><option>Semua rute</option>${routes.map((route) => `<option ${route === analysisFilters.route ? 'selected' : ''}>${escapeHTML(route)}</option>`).join('')}</select></label><label>Tahapan proses<select name="stage"><option>Semua tahapan</option>${processStages.map((stage) => `<option ${stage === analysisFilters.stage ? 'selected' : ''}>${escapeHTML(stage)}</option>`).join('')}</select></label><button class="primary apply-analysis">Terapkan</button></section><section class="analysis-charts"><section class="panel factor-chart"><div class="panel-title"><div><h2>Frekuensi Kendala per Kriteria</h2><p>Berdasarkan kendala yang tercatat pada sistem.</p></div></div><div class="factor-bars">${factors.length ? factors.map((item) => `<div><span>${escapeHTML(item.label)}</span><i><b style="width:${item.value/max*100}%"></b></i><strong>${item.value}</strong></div>`).join('') : '<p class="empty">Belum ada kendala sesuai filter.</p>'}</div></section><section class="panel stage-chart"><div class="panel-title"><div><h2>Kendala per Tahapan Proses</h2><p>Distribusi proses yang terdampak.</p></div></div><div class="stage-content"><div class="stage-donut" style="background:conic-gradient(${slices})"><div><b>${delays.length}</b><span>Kendala</span></div></div><div class="stage-legend">${stages.length ? stages.map((item,index) => `<p><i style="background:${colors[index % colors.length]}"></i><span>${escapeHTML(item.label)}</span><b>${item.value}</b></p>`).join('') : '<p class="muted">Belum ada tahapan proses.</p>'}</div></div></section></section>`;
-  page.querySelector('.apply-analysis').addEventListener('click', () => { analysisFilters.route = page.querySelector('[name="route"]').value; analysisFilters.stage = page.querySelector('[name="stage"]').value; renderApp(); });
+  const bucketLabel = (date) => {
+    if (analysisFilters.timeUnit === 'Tahunan') return String(date.getFullYear());
+    if (analysisFilters.timeUnit === 'Mingguan') {
+      const start = new Date(date.getFullYear(), 0, 1); const week = Math.ceil((((date - start) / 86400000) + start.getDay() + 1) / 7);
+      return `Mgg ${String(week).padStart(2, '0')} · ${date.getFullYear()}`;
+    }
+    return new Intl.DateTimeFormat('id-ID', { month: 'short', year: 'numeric' }).format(date);
+  };
+  const buckets = new Map();
+  selectedShipments.forEach((shipment) => {
+    const etd = parseDate(shipment.etd); if (!etd) return;
+    const label = bucketLabel(etd); const entry = buckets.get(label) || { label, order: etd.getTime(), total: 0, onTime: 0, delay: 0, pending: 0 };
+    entry.total += 1; if (shipment.status === 'On Time') entry.onTime += 1; else if (shipment.status === 'Delay') entry.delay += 1; else entry.pending += 1;
+    buckets.set(label, entry);
+  });
+  const trend = [...buckets.values()].sort((a, b) => a.order - b.order);
+  const maxTrend = Math.max(...trend.map((item) => item.total), 1);
+  const evaluated = selectedShipments.filter((shipment) => shipment.status === 'On Time' || shipment.status === 'Delay');
+  const delayRate = evaluated.length ? Math.round(selectedShipments.filter((shipment) => shipment.status === 'Delay').length / evaluated.length * 100) : 0;
+  const onTimeRate = evaluated.length ? Math.round(selectedShipments.filter((shipment) => shipment.status === 'On Time').length / evaluated.length * 100) : 0;
+  page.innerHTML = `<section class="analysis-heading"><div><p class="eyebrow">INS SEATRACK</p><h1>Analisis</h1><p>Tren shipment serta pola kendala berdasarkan data yang tercatat.</p></div><span>${selectedShipments.length} shipment</span></section><section class="analysis-filter analysis-filter-expanded"><label>Kelompok data<select name="timeUnit"><option ${analysisFilters.timeUnit === 'Mingguan' ? 'selected' : ''}>Mingguan</option><option ${analysisFilters.timeUnit === 'Bulanan' ? 'selected' : ''}>Bulanan</option><option ${analysisFilters.timeUnit === 'Tahunan' ? 'selected' : ''}>Tahunan</option></select></label><label>Tahun<select name="year"><option>Semua tahun</option>${availableYears.map((year) => `<option ${String(year) === String(analysisFilters.year) ? 'selected' : ''}>${year}</option>`).join('')}</select></label><label>Rute<select name="route"><option>Semua rute</option>${routes.map((route) => `<option ${route === analysisFilters.route ? 'selected' : ''}>${escapeHTML(route)}</option>`).join('')}</select></label><label>Tahapan kendala<select name="stage"><option>Semua tahapan</option>${processStages.map((stage) => `<option ${stage === analysisFilters.stage ? 'selected' : ''}>${escapeHTML(stage)}</option>`).join('')}</select></label><button class="primary apply-analysis">Terapkan</button></section><section class="analysis-kpis"><article><span>Total shipment</span><strong>${selectedShipments.length}</strong><small>Sesuai filter ETD</small></article><article><span>On time</span><strong>${onTimeRate}%</strong><small>${selectedShipments.filter((shipment) => shipment.status === 'On Time').length} shipment dievaluasi</small></article><article><span>Delay</span><strong>${delayRate}%</strong><small>${selectedShipments.filter((shipment) => shipment.status === 'Delay').length} shipment dievaluasi</small></article><article><span>Kendala tercatat</span><strong>${delays.length}</strong><small>Data kendala sesuai filter</small></article></section><section class="panel shipment-trend-chart"><div class="panel-title"><div><h2>Tren shipment</h2><p>Kelompok ${analysisFilters.timeUnit.toLowerCase()} berdasarkan ETD. Persentase menunjukkan porsi terhadap total shipment sesuai filter.</p></div></div>${trend.length ? `<div class="trend-bars">${trend.map((item) => `<article title="${escapeHTML(item.label)}: ${item.total} shipment"><div class="trend-value"><strong>${item.total}</strong><small>${Math.round(item.total / selectedShipments.length * 100)}%</small></div><i style="height:${Math.max(item.total / maxTrend * 100, 5)}%"><b style="height:${item.delay ? item.delay / item.total * 100 : 0}%"></b></i><span>${escapeHTML(item.label)}</span></article>`).join('')}</div><div class="trend-legend"><span><i></i>Total shipment</span><span><i></i>Bagian delay</span></div>` : '<p class="empty">Belum ada tanggal ETD yang sesuai dengan filter.</p>'}</section><section class="analysis-charts"><section class="panel factor-chart"><div class="panel-title"><div><h2>Frekuensi Kendala per Kriteria</h2><p>Berdasarkan kendala yang tercatat pada sistem.</p></div></div><div class="factor-bars">${factors.length ? factors.map((item) => `<div><span>${escapeHTML(item.label)}</span><i><b style="width:${item.value/max*100}%"></b></i><strong>${item.value}</strong></div>`).join('') : '<p class="empty">Belum ada kendala sesuai filter.</p>'}</div></section><section class="panel stage-chart"><div class="panel-title"><div><h2>Kendala per Tahapan Proses</h2><p>Distribusi proses yang terdampak.</p></div></div><div class="stage-content"><div class="stage-donut" style="background:conic-gradient(${slices})"><div><b>${delays.length}</b><span>Kendala</span></div></div><div class="stage-legend">${stages.length ? stages.map((item,index) => `<p><i style="background:${colors[index % colors.length]}"></i><span>${escapeHTML(item.label)}</span><b>${item.value}</b></p>`).join('') : '<p class="muted">Belum ada tahapan proses.</p>'}</div></div></section></section>`;
+  page.querySelector('.apply-analysis').addEventListener('click', () => { analysisFilters.timeUnit = page.querySelector('[name="timeUnit"]').value; analysisFilters.year = page.querySelector('[name="year"]').value; analysisFilters.route = page.querySelector('[name="route"]').value; analysisFilters.stage = page.querySelector('[name="stage"]').value; renderApp(); });
 }
 
 function buildAhpTemplate(page) {
@@ -578,7 +618,8 @@ function manual() {
     ['7', 'Tindak lanjuti rekomendasi', 'Buka Rekomendasi perbaikan, tentukan penanggung jawab, lalu perbarui status tindak lanjut hingga selesai.', 'recommendations'],
     ['8', 'Buat laporan', 'Gunakan Laporan untuk melihat rekap kinerja, kriteria kendala utama, lalu unduh atau cetak laporan untuk manajemen.', 'reports']
   ];
-  page.innerHTML = `<section class="manual-heading"><div><p class="eyebrow">PANDUAN SISTEM</p><h1>Panduan penggunaan INS SeaTrack</h1><p>Alur kerja operasional untuk memantau shipment, mencatat kendala, dan menindaklanjuti perbaikan.</p></div><button class="secondary manual-print" type="button">Cetak panduan</button></section><section class="manual-start"><strong>Alur singkat</strong><span>Data shipment → Proses pengiriman → Kendala → Analisis → Rekomendasi → Laporan</span></section><section class="manual-grid">${steps.map(([number, title, description, view]) => `<article class="manual-step"><span>${number}</span><div><h2>${title}</h2><p>${description}</p><button type="button" data-guide-view="${view}">Buka halaman</button></div></article>`).join('')}</section><section class="manual-notes"><h2>Ketentuan penting</h2><ul><li>Status On Time atau Delay dihitung setelah <strong>actual arrival</strong> diisi.</li><li>Tahapan proses shipment dicatat secara berurutan agar riwayat pengiriman valid.</li><li>Setiap tombol simpan akan meminta konfirmasi sebelum data diperbarui.</li><li>Pengaturan akun tersedia melalui profil di kanan atas untuk mengganti password.</li></ul></section>`;
+  const permittedSteps = steps.filter(([, , , view]) => (view !== 'delays' || canOperate()) && (!['analysis', 'ahp', 'recommendations', 'reports'].includes(view) || canManage()));
+  page.innerHTML = `<section class="manual-heading"><div><p class="eyebrow">PANDUAN SISTEM</p><h1>Panduan penggunaan INS SeaTrack</h1><p>Alur kerja operasional untuk memantau shipment, mencatat kendala, dan menindaklanjuti perbaikan.</p></div><button class="secondary manual-print" type="button">Cetak panduan</button></section><section class="manual-start"><strong>Alur singkat</strong><span>Data shipment → Proses pengiriman → Kendala → Analisis → Rekomendasi → Laporan</span></section><section class="manual-grid">${permittedSteps.map(([number, title, description, view]) => `<article class="manual-step"><span>${number}</span><div><h2>${title}</h2><p>${description}</p><button type="button" data-guide-view="${view}">Buka halaman</button></div></article>`).join('')}</section><section class="manual-notes"><h2>Ketentuan penting</h2><ul><li>Status On Time atau Delay dihitung setelah <strong>actual arrival</strong> diisi.</li><li>Tahapan proses shipment dicatat secara berurutan agar riwayat pengiriman valid.</li><li>Setiap tombol simpan akan meminta konfirmasi sebelum data diperbarui.</li><li>Pengaturan akun tersedia melalui profil di kanan atas untuk mengganti password.</li></ul></section>`;
   page.querySelectorAll('[data-guide-view]').forEach((button) => button.addEventListener('click', () => { state.view = button.dataset.guideView; renderApp(); }));
   page.querySelector('.manual-print').addEventListener('click', () => window.print());
   return page;
